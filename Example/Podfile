@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'DeepstreamIO_Example' do
+  pod 'DeepstreamIO', :podspec => '../DeepstreamIO.podspec'
+
+  target 'DeepstreamIO_Tests' do
+    inherit! :search_paths
+
+
+  end
+end
