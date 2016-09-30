@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.authors                   = { "Akram Hussein" => 'akramhussein@gmail.com', "Yasser Fadl" => 'yasser.fadl@deepstreamhub.com' }
   s.social_media_url          = "http://twitter.com/deepstreamio"
 
-  s.source                    = { :http => "https://github.com/deepstreamIO/deepstream.io-client-ios/releases/download/0.8.0/DeepstreamIO.zip" }
+  s.source                    = { :http => "https://github.com/akramhussein/deepstream.io-client-ios/releases/download/#{s.version}/DeepstreamIO.zip" }
 
   s.requires_arc              = true
 
