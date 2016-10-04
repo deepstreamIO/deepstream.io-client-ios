@@ -10,11 +10,11 @@ import UIKit
 
 typealias RecordSubscriptionCallbackHandler = ((recordName: String, path: String, data: JsonElement) -> Void)
 
-@objc class RecordSubscriptionCallback : NSObject, RecordPathChangedCallback {
+class RecordSubscriptionCallback : NSObject, RecordPathChangedCallback {
     
     private var handler : RecordSubscriptionCallbackHandler!
     
-    @objc func onRecordPathChangedWithNSString(recordName: String!, withNSString path: String!, withJsonElement data: JsonElement!) {
+    func onRecordPathChanged(recordName: String!, path: String!, data: JsonElement!) {
         print("\(recordName):\(path) = \(data)")
         self.handler(recordName: recordName, path: path, data: data)
     }
@@ -24,15 +24,10 @@ typealias RecordSubscriptionCallbackHandler = ((recordName: String, path: String
     }
 }
 
-@objc class NewDeepstreamRuntimeErrorHandler : NSObject, DeepstreamRuntimeErrorHandler {
-    
-    func onExceptionWithTopic(topic: Topic!, withEvent event: Event!, withNSString errorMessage: String!) {
-        
-    }
-}
-
 extension DeepstreamClient
 {
+    // Needed as J2ObjC does not translate properties
+    // Required explicit getters/setters in Java
     var record : RecordHandler? {
         get {
             return self.valueForKey("record_") as? RecordHandler
@@ -61,7 +56,8 @@ final class ViewController: UIViewController {
         let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
         dispatch_async(backgroundQueue, {
             
-            // Setup Deepstream.io client
+            // Setup Deepstream.io client 
+            // NOTE: REPLACE HOST
             self.client = DeepstreamClient("138.68.154.77:6021")
 
             sleep(5)
@@ -82,14 +78,14 @@ final class ViewController: UIViewController {
             }
 
             // Get record handler
-            guard let record = client.record?.getRecordWithNSString("some-name") else {
+            guard let record = client.record?.getRecord("some-name") else {
                 return
             }
 
             self.record = record
 
             // Init UI against latest record state
-            let currentRecordText = client.record?.getRecordWithNSString("firstname").get().getAsString()
+            let currentRecordText = client.record?.getRecord("firstname").get().getAsString()
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.textField.text = currentRecordText
             })
