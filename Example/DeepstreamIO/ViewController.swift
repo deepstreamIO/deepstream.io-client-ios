@@ -24,7 +24,7 @@ class RecordSubscriptionCallback : NSObject, RecordPathChangedCallback {
     }
 }
 
-class ErrorHandler : NSObject, DeepstreamRuntimeErrorHandler {
+class RuntimeErrorHandler : NSObject, DeepstreamRuntimeErrorHandler {
     func onException(topic: Topic!, event: Event!, errorMessage: String!) {
         print("Error: \(errorMessage) for topic:\(topic), event:\(event)")
     }
@@ -65,7 +65,8 @@ final class ViewController: UIViewController {
             // Setup Deepstream.io client 
             // NOTE: REPLACE HOST
             self.client = DeepstreamClient("138.68.154.77:6021")
-
+            self.client?.setRuntimeErrorHandler(RuntimeErrorHandler())
+            
             sleep(5)
             guard let client = self.client else {
                 print("Error: Unable to init client")
