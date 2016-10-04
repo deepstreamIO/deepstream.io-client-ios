@@ -24,6 +24,12 @@ class RecordSubscriptionCallback : NSObject, RecordPathChangedCallback {
     }
 }
 
+class ErrorHandler : NSObject, DeepstreamRuntimeErrorHandler {
+    func onException(topic: Topic!, event: Event!, errorMessage: String!) {
+        print("Error: \(errorMessage) for topic:\(topic), event:\(event)")
+    }
+}
+
 extension DeepstreamClient
 {
     // Needed as J2ObjC does not translate properties
