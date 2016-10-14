@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias RecordSubscriptionCallbackHandler = ((recordName: String, path: String, data: JsonElement) -> Void)
+typealias RecordSubscriptionCallbackHandler = ((String, String, JsonElement) -> Void)
 
 class RecordSubscriptionCallback : NSObject, RecordPathChangedCallback {
 
@@ -16,7 +16,7 @@ class RecordSubscriptionCallback : NSObject, RecordPathChangedCallback {
 
     func onRecordPathChanged(recordName: String!, path: String!, data: JsonElement!) {
         print("\(recordName):\(path) = \(data)")
-        self.handler(recordName: recordName, path: path, data: data)
+        self.handler(recordName, path, data)
     }
 
     init(handler: RecordSubscriptionCallbackHandler) {
