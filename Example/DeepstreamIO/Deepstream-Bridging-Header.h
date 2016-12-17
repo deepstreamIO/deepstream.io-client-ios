@@ -3,7 +3,7 @@
 //  DeepstreamIO
 //
 //  Created by Akram Hussein on 28/09/2016.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Copyright (c) 2016 deepstreamHub GmbH. All rights reserved.
 //
 
 #ifndef Deepstream_Bridging_Header_h
