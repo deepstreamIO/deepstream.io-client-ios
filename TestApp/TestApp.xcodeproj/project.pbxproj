@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		94EB0BE005B7BE50DF368227 /* libPods-TestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A55AD17B0506FDA310C567D8 /* libPods-TestApp.a */; };
-		FA0228DB1E05BEDE0021FF62 /* PublisherConnectionStateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DA1E05BEDE0021FF62 /* PublisherConnectionStateListener.swift */; };
-		FA0228DD1E05BF4F0021FF62 /* PublisherRunTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DC1E05BF4F0021FF62 /* PublisherRunTimeHandler.swift */; };
+		FA0228DB1E05BEDE0021FF62 /* AppConnectionStateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */; };
+		FA0228DD1E05BF4F0021FF62 /* RunTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */; };
 		FA0228DF1E05BF800021FF62 /* DeepstreamClient+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */; };
-		FA0228E11E05C04C0021FF62 /* PublisherRpcRequestedListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228E01E05C04C0021FF62 /* PublisherRpcRequestedListener.swift */; };
 		FA0228E31E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228E21E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift */; };
-		FA66FCB41E05B33300D50190 /* PublisherListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66FCB31E05B33300D50190 /* PublisherListener.swift */; };
 		FAF515AE1E057CB900D2BB28 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515AD1E057CB900D2BB28 /* main.swift */; };
 		FAF515B81E05912C00D2BB28 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515B71E05912C00D2BB28 /* Publisher.swift */; };
 		FAF515BA1E05913B00D2BB28 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515B91E05913B00D2BB28 /* Subscriber.swift */; };
@@ -35,12 +33,10 @@
 		673686790F3AC25AF780A5DA /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
 		A55AD17B0506FDA310C567D8 /* libPods-TestApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B28136F1151F4B9FB54BE408 /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
-		FA0228DA1E05BEDE0021FF62 /* PublisherConnectionStateListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublisherConnectionStateListener.swift; sourceTree = "<group>"; };
-		FA0228DC1E05BF4F0021FF62 /* PublisherRunTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublisherRunTimeHandler.swift; sourceTree = "<group>"; };
+		FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConnectionStateListener.swift; sourceTree = "<group>"; };
+		FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeHandler.swift; sourceTree = "<group>"; };
 		FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeepstreamClient+Extensions.swift"; sourceTree = "<group>"; };
-		FA0228E01E05C04C0021FF62 /* PublisherRpcRequestedListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublisherRpcRequestedListener.swift; sourceTree = "<group>"; };
 		FA0228E21E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigOptions_Enum+Extensions.swift"; sourceTree = "<group>"; };
-		FA66FCB31E05B33300D50190 /* PublisherListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublisherListener.swift; sourceTree = "<group>"; };
 		FAF515AA1E057CB900D2BB28 /* TestApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF515AD1E057CB900D2BB28 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -77,16 +73,37 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FA0228E41E05D4090021FF62 /* Deepstream Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */,
+				FA0228E21E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift */,
+			);
+			name = "Deepstream Extensions";
+			sourceTree = "<group>";
+		};
+		FA0228E51E05D4DA0021FF62 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FAF515AD1E057CB900D2BB28 /* main.swift */,
+				FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		FA0228E61E05D52A0021FF62 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */,
+				FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */,
+			);
+			name = Implementations;
+			sourceTree = "<group>";
+		};
 		FA66FCB51E05B33800D50190 /* Publisher */ = {
 			isa = PBXGroup;
 			children = (
-				FA66FCB31E05B33300D50190 /* PublisherListener.swift */,
 				FAF515B71E05912C00D2BB28 /* Publisher.swift */,
-				FA0228DA1E05BEDE0021FF62 /* PublisherConnectionStateListener.swift */,
-				FA0228DC1E05BF4F0021FF62 /* PublisherRunTimeHandler.swift */,
-				FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */,
-				FA0228E01E05C04C0021FF62 /* PublisherRpcRequestedListener.swift */,
-				FA0228E21E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift */,
 			);
 			name = Publisher;
 			sourceTree = "<group>";
@@ -120,8 +137,9 @@
 		FAF515AC1E057CB900D2BB28 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
-				FAF515AD1E057CB900D2BB28 /* main.swift */,
-				FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */,
+				FA0228E51E05D4DA0021FF62 /* App */,
+				FA0228E61E05D52A0021FF62 /* Implementations */,
+				FA0228E41E05D4090021FF62 /* Deepstream Extensions */,
 				FA66FCB51E05B33800D50190 /* Publisher */,
 				FA66FCB61E05B33D00D50190 /* Subscriber */,
 			);
@@ -221,14 +239,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF515BA1E05913B00D2BB28 /* Subscriber.swift in Sources */,
-				FA0228E11E05C04C0021FF62 /* PublisherRpcRequestedListener.swift in Sources */,
 				FAF515B81E05912C00D2BB28 /* Publisher.swift in Sources */,
-				FA66FCB41E05B33300D50190 /* PublisherListener.swift in Sources */,
 				FAF515AE1E057CB900D2BB28 /* main.swift in Sources */,
-				FA0228DD1E05BF4F0021FF62 /* PublisherRunTimeHandler.swift in Sources */,
+				FA0228DD1E05BF4F0021FF62 /* RunTimeHandler.swift in Sources */,
 				FA0228E31E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift in Sources */,
 				FA0228DF1E05BF800021FF62 /* DeepstreamClient+Extensions.swift in Sources */,
-				FA0228DB1E05BEDE0021FF62 /* PublisherConnectionStateListener.swift in Sources */,
+				FA0228DB1E05BEDE0021FF62 /* AppConnectionStateListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

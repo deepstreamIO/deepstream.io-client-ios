@@ -74,6 +74,29 @@ final public class Publisher {
     }
     
     private func listenEvent(client: DeepstreamClient) {
+        typealias PublisherListenerCallbackHandler = ((String, DeepstreamClient) -> Void)
+        
+        final class PublisherListener: NSObject, ListenListener {
+            
+            private var handler : PublisherListenerCallbackHandler!
+            private var client : DeepstreamClient!
+            
+            init(handler: @escaping PublisherListenerCallbackHandler, client: DeepstreamClient) {
+                self.handler = handler
+                self.client = client
+            }
+            
+            func onSubscription(forPatternAdded subscription: String!) -> jboolean {
+                print("Record \(subscription!) just subscribed")
+                self.handler(subscription, self.client)
+                return true
+            }
+            
+            func onSubscription(forPatternRemoved subscription: String!) {
+                print("Record \(subscription!) just unsubscribed")
+            }
+        }
+        
         client.event?.listen(with: "event/.*",
                              with: PublisherListener(handler: { (subscription, client) in
                                 print("Event \(subscription) just subscribed.")
@@ -90,6 +113,20 @@ final public class Publisher {
     }
 
     private func provideRpc(client: DeepstreamClient) {
+        typealias PublisherRpcRequestedListenerHandler = ((String, Any, RpcResponse) -> Void)
+        
+        final class PublisherRpcRequestedListener : NSObject, RpcRequestedListener {
+            private var handler : PublisherRpcRequestedListenerHandler!
+            
+            init(handler: @escaping PublisherRpcRequestedListenerHandler) {
+                self.handler = handler
+            }
+            
+            func onRPCRequested(_ rpcName: String!, data: Any!, response: RpcResponse!) {
+                self.handler(rpcName, data, response)
+            }
+        }
+        
         client.rpc?.provide("add-numbers",
                             rpcRequestedListener: PublisherRpcRequestedListener { (rpcName, data, response) in
                                 print("Got an RPC request")
@@ -120,6 +157,6 @@ final public class Publisher {
     }
     
     private func subscribeConnectionChanges(client: DeepstreamClient) {
-        client.addConnectionChangeListener(with: PublisherConnectionStateListener())
+        client.addConnectionChangeListener(with: AppConnectionStateListener())
     }
 }

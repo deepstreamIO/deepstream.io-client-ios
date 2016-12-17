@@ -3,7 +3,7 @@
 //  TestApp
 //
 //  Created by Akram Hussein on 17/12/2016.
-//
+//  Copyright (c) 2016 deepstreamHub GmbH. All rights reserved.
 //
 
 import Foundation
@@ -26,6 +26,12 @@ extension DeepstreamClient {
     var rpc : RpcHandler? {
         get {
             return self.value(forKey: "rpc_") as? RpcHandler
+        }
+    }
+    
+    var presence : PresenceHandler? {
+        get {
+            return self.value(forKey: "presence_") as? PresenceHandler
         }
     }
 }

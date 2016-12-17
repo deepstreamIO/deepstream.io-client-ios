@@ -51,27 +51,49 @@ final public class Subscriber {
     }
     
     private func hasRecord(client: DeepstreamClient) {
+        guard let hasResult = client.record?.getRecord("record/has") else {
+            print("Has did not work")
+            return
+        }
         
+        print("Has result: \(hasResult)")
     }
     
     private func makeSnapshot(client: DeepstreamClient, recordName: String) {
+        guard let snapshotResult : JsonElement = client.record?.snapshot(recordName) else {
+            print("Snapshot did not work")
+            return
+        }
         
+        print("Snapshot result: \(snapshotResult)")
     }
     
     private func makeRpc(client: DeepstreamClient) {
+        // TODO: Place in loop
+
+        let numbers = [
+            floor(Double(arc4random()) * 10),
+            floor(Double(arc4random()) * 10)
+        ]
         
+        guard let rpcResponse = client.rpc?.make("add-numbers", data: numbers) else {
+            print("RPC failed")
+            return
+        }
+        
+        print("RPC success with data: \(rpcResponse.getData())")
     }
     
     private func subscribeRuntimeErrors(client: DeepstreamClient) {
-        
+        client.setRuntimeErrorHandler(RuntimeErrorHandler())
     }
     
     private func subscribeConnectionChanges(client: DeepstreamClient) {
-    
+        client.addConnectionChangeListener(with: AppConnectionStateListener())
     }
     
     private func subscribeAnonymousRecord(client: DeepstreamClient) {
-        
+        let _ = client.record?.getAnonymousRecord()
     }
     
     private func subscribeList(client: DeepstreamClient) {
@@ -84,10 +106,36 @@ final public class Subscriber {
     
     private func subscribeEvent(client: DeepstreamClient) {
         
+        final class SubscriberEventListener : NSObject, EventListener {
+            func onEvent(with eventName: String!, withId args: Any!) {
+                guard let parameters = args as? JsonArray else {
+                    print("Unable to cast args as JsonArray")
+                    return
+                }
+                
+                let first = parameters.getWith(0).getAsString()
+                let second = parameters.getWith(1).getAsLong()
+                
+                print("Event '\(eventName!)' occurred with: \(first) at \(second)")
+            }
+        }
+        
+        client.event?.subscribe(with: "event/a", with: SubscriberEventListener())
     }
     
     private func subscribePresence(client: DeepstreamClient) {
         
+        final class SubscriberPresenceEventListener : NSObject, PresenceEventListener {
+            func onClientLogin(with username: String!) {
+                print("\(username) logged in")
+            }
+            
+            func onClientLogout(with username: String!) {
+                print("\(username) logged out")
+            }
+        }
+        
+        client.presence?.subscribe(with: SubscriberPresenceEventListener())
     }
     
     private func queryClients(client: DeepstreamClient) {

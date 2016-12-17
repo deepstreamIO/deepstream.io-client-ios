@@ -1,5 +1,5 @@
 //
-//  PublisherConnectionStateListener.swift
+//  AppConnectionStateListener.swift
 //  TestApp
 //
 //  Created by Akram Hussein on 17/12/2016.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class PublisherConnectionStateListener : NSObject, ConnectionStateListener {
+final class AppConnectionStateListener : NSObject, ConnectionStateListener {
     func connectionStateChanged(_ connectionState: ConnectionState!) {
         print("Connection state changed \(connectionState!)")
     }
