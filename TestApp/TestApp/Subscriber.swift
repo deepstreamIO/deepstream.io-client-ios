@@ -176,13 +176,15 @@ final public class Subscriber {
     }
     
     private func queryClients(client: DeepstreamClient) {
-        // TODO: JavaUtilsArrayList issue
-        /*
-        guard let clients = client.presence.getAll() else {
-            print("")
+        guard let clients = client.presence?.getAll() else {
+            print("Unable to get all clients")
             return
         }
-         */
-        
+                
+        print("Clients currently connected:")
+        for c : String in clients.toNSArray() {
+           print("\(c) ", terminator:"")
+        }
+        print()
     }
 }
