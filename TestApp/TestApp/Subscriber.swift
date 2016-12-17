@@ -15,6 +15,11 @@ final public class Subscriber {
         authData.addProperty(with: "username", with: "Yasser")
         
         // TODO: Config Properties
+        let config : [String : Int] = [
+            ConfigOptions_Enum.SUBSCRIPTION_TIMEOUT.string : 500,
+            ConfigOptions_Enum.RECORD_READ_ACK_TIMEOUT.string : 500,
+            ConfigOptions_Enum.RECORD_READ_TIMEOUT.string : 500
+        ]
         
         guard let client = DeepstreamClient("0.0.0.0:6020") else {
             print("Error: Unable to initialize client")
