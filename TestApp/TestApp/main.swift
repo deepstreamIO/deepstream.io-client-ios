@@ -9,5 +9,4 @@
 import Foundation
 
 let publisher = Publisher()
-let subscriber = Subscriber()
-
+CFRunLoopRun()

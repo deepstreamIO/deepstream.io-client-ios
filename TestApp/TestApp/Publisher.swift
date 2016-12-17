@@ -8,19 +8,6 @@
 
 import Foundation
 
-extension DeepstreamClient
-{
-    // Needed as J2ObjC does not translate properties
-    // Required explicit getters/setters in Java
-    var record : RecordHandler? {
-        get {
-            return self.value(forKey: "record_") as? RecordHandler
-        }
-    }
-}
-
-
-
 final public class Publisher {
     
     init() {
@@ -52,35 +39,87 @@ final public class Publisher {
     
     private func listenRecord(client: DeepstreamClient) {
         guard let record = client.record else {
+            print("No record")
             return
         }
         
-        // let listenListener = ListenListener()
+        let handler = PublisherListener(handler: { (subscription, client) in
+            self.updateRecord(subscription: subscription, client: client)
+        }, client: client)
         
-        // record.listen("record/.*", listenCallback: <#T##ListenListener!#>)
+        record.listen("record/.*", listenCallback: handler)
     }
     
-    //private func updateRecord(subscription: String, client: DeepstreamClient, scheduledFuture: ScheduledFuture) {
-    //
-    //}
+    private func updateRecord(subscription: String, client: DeepstreamClient) {
+        guard let record = client.record?.getRecord(subscription) else {
+            return
+        }
+        
+        guard let data = JsonObject() else {
+            return
+        }
+        
+        var count = 0
+        // TODO: Place inside loop
+        //let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            let timeInterval : TimeInterval = Date().timeIntervalSince1970
+            data.addProperty(with: "timer", with: NSNumber(value: timeInterval))
+            data.addProperty(with: "id", with: subscription)
+            data.addProperty(with: "count", with: NSNumber(value: count))
+            count += 1
+            record.set(data)
+        //}
+
+        //timer.fire()
+    }
     
     private func listenEvent(client: DeepstreamClient) {
-        
+        client.event?.listen(with: "event/.*",
+                             with: PublisherListener(handler: { (subscription, client) in
+                                print("Event \(subscription) just subscribed.")
+                                self.publishEvent(subscription: subscription, client: client);
+                             }, client: client))
     }
     
-    //private func publishEvent(subscription: String, client: DeepstreamClient, executorService: ScheduledExecutorService) {
-    //
-    // }
+    private func publishEvent(subscription: String, client: DeepstreamClient) {
+        // TODO: Place inside loop
+        let timeInterval : TimeInterval = Date().timeIntervalSince1970
+        let data : [Any] = ["An event just happened", timeInterval]
+        
+        client.event?.emit(with: subscription, withId: data)
+    }
 
     private func provideRpc(client: DeepstreamClient) {
-        
+        client.rpc?.provide("add-numbers",
+                            rpcRequestedListener: PublisherRpcRequestedListener { (rpcName, data, response) in
+                                print("Got an RPC request")
+                                
+                                guard let numbers = data as? JsonArray else {
+                                    print("Unable to cast data to JsonArray")
+                                    return
+                                }
+                                
+                                let first = numbers.getWith(0).getAsDouble()
+                                let second = numbers.getWith(1).getAsDouble()
+                                
+                                let random = (Double(arc4random()) / Double(UInt32.max))
+                                switch (random) {
+                                case 0..<0.2:
+                                    response.reject()
+                                case 0..<0.7:
+                                    let value = first + second
+                                    response.send(value)
+                                default:
+                                    print("This intentionally randomly failed")
+                                }
+        })
     }
     
     private func subscribeRuntimeErrors(client: DeepstreamClient) {
-        
+        client.setRuntimeErrorHandler(RuntimeErrorHandler())
     }
     
     private func subscribeConnectionChanges(client: DeepstreamClient) {
-        
+        client.addConnectionChangeListener(with: PublisherConnectionStateListener())
     }
 }
