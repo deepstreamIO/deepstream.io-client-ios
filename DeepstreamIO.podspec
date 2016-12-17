@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
     'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/DeepstreamIO/j2objc/lib'
   }
   s.osx.xcconfig = {
-    'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/DeepstreamIO/j2objc/lib/x86_64Release'
+    'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/DeepstreamIO/j2objc/lib/macosx'
   }
 
   s.ios.deployment_target     = '8.3'
