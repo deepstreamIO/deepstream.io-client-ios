@@ -84,9 +84,12 @@ final public class Publisher {
     private func publishEvent(subscription: String, client: DeepstreamClient) {
         // TODO: Place inside loop
         let timeInterval : TimeInterval = Date().timeIntervalSince1970
-        let data : [Any] = ["An event just happened", timeInterval]
         
-        client.event?.emit(with: subscription, withId: data)
+        let json : JsonArray = JsonArray()
+        json.add(with: "An event just happened")
+        json.add(with: NSNumber(value: timeInterval))
+        
+        client.event?.emit(with: subscription, withId: json)
     }
 
     private func provideRpc(client: DeepstreamClient) {
