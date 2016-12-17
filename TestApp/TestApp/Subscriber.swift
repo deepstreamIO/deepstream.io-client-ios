@@ -74,15 +74,12 @@ final public class Subscriber {
             data.add(with: NSNumber(value: floor(Double(arc4random()) * 10)))
             data.add(with: NSNumber(value: floor(Double(arc4random()) * 10)))
         
-            let exception = tryBlock {
-                guard let rpcResponse = client.rpc?.make("add-numbers", data: data) else {
-                    print("RPC failed")
-                    return
-                }
-                
-                print("RPC success with data: \(rpcResponse.getData()!)")
+            guard let rpcResponse = client.rpc?.make("add-numbers", data: data) else {
+                print("RPC failed")
+                return
             }
-            print("exception: \(exception)")
+            
+            print("RPC success with data: \(rpcResponse.getData()!)")
         }
         timer.fire()
     }
