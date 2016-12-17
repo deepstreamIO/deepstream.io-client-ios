@@ -62,17 +62,16 @@ final public class Subscriber {
             print("Snapshot did not work")
             return
         }
-        
+    
         print("Snapshot result: \(snapshotResult)")
     }
     
     private func makeRpc(client: DeepstreamClient) {
         // TODO: Place in loop
 
-        let numbers = [
-            floor(Double(arc4random()) * 10),
-            floor(Double(arc4random()) * 10)
-        ]
+        let numbers : JavaUtilArrayList = JavaUtilArrayList(int: 2)
+        numbers.add(with: 0, withId: floor(Double(arc4random()) * 10))
+        numbers.add(with: 1, withId: floor(Double(arc4random()) * 10))
         
         guard let rpcResponse = client.rpc?.make("add-numbers", data: numbers) else {
             print("RPC failed")
@@ -100,12 +99,12 @@ final public class Subscriber {
             return
         }
         
-        // TODO: JavaUtilsArrayList issue
-        //final class SubscribeListChangedListener : NSObject, ListChangedListener {
-        //
-        //}
-        
-        //list.subscribe(SubscribeListChangedListener())
+        final class SubscribeListChangedListener : NSObject, ListChangedListener {
+            func onListChanged(_ listName: String!, entries: JavaUtilListProtocol!) {
+                print("List \(listName) entries changed to \(entries)")
+            }
+        }
+        list.subscribe(SubscribeListChangedListener())
         
         final class SubscribeListEntryChangedListener : NSObject, ListEntryChangedListener {
             func onEntryAdded(_ listName: String!, entry entry_: String!, position: jint) {
