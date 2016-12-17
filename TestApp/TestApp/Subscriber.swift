@@ -70,17 +70,17 @@ final public class Subscriber {
     
     private func makeRpc(client: DeepstreamClient) {
         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            let numbers : JavaUtilArrayList = JavaUtilArrayList(int: 2)
-            numbers.add(with: 0, withId: NSNumber(value: floor(Double(arc4random()) * 10)))
-            numbers.add(with: 1, withId: NSNumber(value: floor(Double(arc4random()) * 10)))
-            
+            let data : JsonArray = JsonArray()
+            data.add(with: NSNumber(value: floor(Double(arc4random()) * 10)))
+            data.add(with: NSNumber(value: floor(Double(arc4random()) * 10)))
+        
             let exception = tryBlock {
-                guard let rpcResponse = client.rpc?.make("add-numbers", data: numbers) else {
+                guard let rpcResponse = client.rpc?.make("add-numbers", data: data) else {
                     print("RPC failed")
                     return
                 }
                 
-                print("RPC success with data: \(rpcResponse.getData())")
+                print("RPC success with data: \(rpcResponse.getData()!)")
             }
             print("exception: \(exception)")
         }
@@ -167,11 +167,11 @@ final public class Subscriber {
         
         final class SubscriberPresenceEventListener : NSObject, PresenceEventListener {
             func onClientLogin(with username: String!) {
-                print("\(username) logged in")
+                print("\(username!) logged in")
             }
             
             func onClientLogout(with username: String!) {
-                print("\(username) logged out")
+                print("\(username!) logged out")
             }
         }
         
