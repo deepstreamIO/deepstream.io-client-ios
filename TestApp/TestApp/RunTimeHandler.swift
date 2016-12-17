@@ -10,6 +10,6 @@ import Foundation
 
 final class RuntimeErrorHandler : NSObject, DeepstreamRuntimeErrorHandler {
     func onException(_ topic: Topic!, event: Event!, errorMessage: String!) {
-        print("Error: \(errorMessage!) for topic: \(topic!), event: \(event!)")
+        print("Error: \(errorMessage) for topic: \(topic), event: \(event)")
     }
 }
