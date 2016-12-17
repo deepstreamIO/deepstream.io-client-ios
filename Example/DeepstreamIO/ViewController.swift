@@ -49,8 +49,8 @@ final class ViewController: UIViewController {
 
     // Deepstream
 
-        var client : DeepstreamClient?
-        var record : Record?
+    var client : DeepstreamClient?
+    var record : Record?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,17 +65,17 @@ final class ViewController: UIViewController {
             // Setup Deepstream.io client 
             // NOTE: REPLACE HOST
 
-            self.client = DeepstreamClient("dashboard-ds-dev.deepstreamhub.com:6021")
+            self.client = DeepstreamClient("0.0.0.0:6020")
             self.client?.setRuntimeErrorHandler(RuntimeErrorHandler())
 
             sleep(5)
+            
             guard let client = self.client else {
                 print("Error: Unable to init client")
                 return
             }
 
             // Login
-
             let loginResult = client.login()
 
             if (loginResult.getErrorEvent() == nil) {
