@@ -1,4 +1,5 @@
+platform :osx, '10.7'
+
 target 'TestApp' do
 	pod 'DeepstreamIO', :podspec => '../DeepstreamIO.podspec'
-  	use_frameworks!
 end
