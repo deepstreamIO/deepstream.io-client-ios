@@ -13,7 +13,7 @@ final public class Publisher {
     init() {
         let authData : JsonObject = JsonObject()
         authData.addProperty(with: "username", with: "Publisher")
-        
+    
         guard let client = DeepstreamClient("0.0.0.0:6020") else {
             print("Error: Unable to initialize client")
             return
@@ -52,25 +52,21 @@ final public class Publisher {
     
     private func updateRecord(subscription: String, client: DeepstreamClient) {
         guard let record = client.record?.getRecord(subscription) else {
-            return
-        }
-        
-        guard let data = JsonObject() else {
+            print("Getting record for subscription '\(subscription)' failed")
             return
         }
         
         var count = 0
-        // TODO: Place inside loop
-        //let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
             let timeInterval : TimeInterval = Date().timeIntervalSince1970
+            let data : JsonObject = JsonObject()
             data.addProperty(with: "timer", with: NSNumber(value: timeInterval))
             data.addProperty(with: "id", with: subscription)
             data.addProperty(with: "count", with: NSNumber(value: count))
             count += 1
             record.set(data)
-        //}
-
-        //timer.fire()
+        }
+        timer.fire()
     }
     
     private func listenEvent(client: DeepstreamClient) {        
@@ -82,14 +78,16 @@ final public class Publisher {
     }
     
     private func publishEvent(subscription: String, client: DeepstreamClient) {
-        // TODO: Place inside loop
-        let timeInterval : TimeInterval = Date().timeIntervalSince1970
-        
-        let json : JsonArray = JsonArray()
-        json.add(with: "An event just happened")
-        json.add(with: NSNumber(value: timeInterval))
-        
-        client.event?.emit(with: subscription, withId: json)
+        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            let timeInterval : TimeInterval = Date().timeIntervalSince1970
+            
+            let data : JsonArray = JsonArray()
+            data.add(with: "An event just happened")
+            data.add(with: NSNumber(value: timeInterval))
+            
+            client.event?.emit(with: subscription, withId: data)
+        }
+        timer.fire()
     }
 
     private func provideRpc(client: DeepstreamClient) {
