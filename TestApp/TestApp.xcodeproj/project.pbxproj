@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		94EB0BE005B7BE50DF368227 /* libPods-TestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A55AD17B0506FDA310C567D8 /* libPods-TestApp.a */; };
+		FA66FCB41E05B33300D50190 /* PublisherListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66FCB31E05B33300D50190 /* PublisherListener.swift */; };
 		FAF515AE1E057CB900D2BB28 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515AD1E057CB900D2BB28 /* main.swift */; };
 		FAF515B81E05912C00D2BB28 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515B71E05912C00D2BB28 /* Publisher.swift */; };
 		FAF515BA1E05913B00D2BB28 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515B91E05913B00D2BB28 /* Subscriber.swift */; };
@@ -29,6 +30,7 @@
 		673686790F3AC25AF780A5DA /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
 		A55AD17B0506FDA310C567D8 /* libPods-TestApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B28136F1151F4B9FB54BE408 /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
+		FA66FCB31E05B33300D50190 /* PublisherListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublisherListener.swift; sourceTree = "<group>"; };
 		FAF515AA1E057CB900D2BB28 /* TestApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF515AD1E057CB900D2BB28 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -65,6 +67,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FA66FCB51E05B33800D50190 /* Publisher */ = {
+			isa = PBXGroup;
+			children = (
+				FA66FCB31E05B33300D50190 /* PublisherListener.swift */,
+				FAF515B71E05912C00D2BB28 /* Publisher.swift */,
+			);
+			name = Publisher;
+			sourceTree = "<group>";
+		};
+		FA66FCB61E05B33D00D50190 /* Subscriber */ = {
+			isa = PBXGroup;
+			children = (
+				FAF515B91E05913B00D2BB28 /* Subscriber.swift */,
+			);
+			name = Subscriber;
+			sourceTree = "<group>";
+		};
 		FAF515A11E057CB900D2BB28 = {
 			isa = PBXGroup;
 			children = (
@@ -88,8 +107,8 @@
 			children = (
 				FAF515AD1E057CB900D2BB28 /* main.swift */,
 				FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */,
-				FAF515B71E05912C00D2BB28 /* Publisher.swift */,
-				FAF515B91E05913B00D2BB28 /* Subscriber.swift */,
+				FA66FCB51E05B33800D50190 /* Publisher */,
+				FA66FCB61E05B33D00D50190 /* Subscriber */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -188,6 +207,7 @@
 			files = (
 				FAF515BA1E05913B00D2BB28 /* Subscriber.swift in Sources */,
 				FAF515B81E05912C00D2BB28 /* Publisher.swift in Sources */,
+				FA66FCB41E05B33300D50190 /* PublisherListener.swift in Sources */,
 				FAF515AE1E057CB900D2BB28 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
