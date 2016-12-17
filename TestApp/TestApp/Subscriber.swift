@@ -97,11 +97,48 @@ final public class Subscriber {
     }
     
     private func subscribeList(client: DeepstreamClient) {
+        guard let list = client.record?.getList("list/a") else {
+            print("Unable to get list: list/a")
+            return
+        }
         
+        // TODO: JavaUtilsArrayList issue
+        //final class SubscribeListChangedListener : NSObject, ListChangedListener {
+        //
+        //}
+        
+        //list.subscribe(SubscribeListChangedListener())
+        
+        final class SubscribeListEntryChangedListener : NSObject, ListEntryChangedListener {
+            func onEntryAdded(_ listName: String!, entry entry_: String!, position: jint) {
+                print("List \(listName) entry \(entry_) added at \(position)")
+            }
+            
+            func onEntryRemoved(_ listName: String!, entry entry_: String!, position: jint) {
+                print("List \(listName) entry \(entry_) removed from \(position)")
+            }
+            
+            func onEntryMoved(_ listName: String!, entry entry_: String!, position: jint) {
+                print("List \(listName) entry \(entry_) move to \(position)")
+            }
+        }
+        list.subscribe(with: SubscribeListEntryChangedListener())
     }
     
     private func subscribeRecord(client: DeepstreamClient, recordName: String) {
+        guard let record = client.record?.getRecord(recordName) else {
+            print("Unable to get recordName \(recordName)")
+            return
+        }
         
+        final class SubscribeRecordChangedCallback : NSObject, RecordChangedCallback {
+            func onRecordChanged(_ recordName: String!, data: JsonElement!) {
+                print("Record '\(recordName)' changed, data is now: \(data)")
+            }
+        }
+        
+        record.subscribe(SubscribeRecordChangedCallback())
+        print("Record '\(record.name())' initial state: \(record.get())")
     }
     
     private func subscribeEvent(client: DeepstreamClient) {
@@ -139,9 +176,13 @@ final public class Subscriber {
     }
     
     private func queryClients(client: DeepstreamClient) {
-        guard let clients = client.presence else {
+        // TODO: JavaUtilsArrayList issue
+        /*
+        guard let clients = client.presence.getAll() else {
             print("")
             return
         }
+         */
+        
     }
 }
