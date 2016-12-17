@@ -20,7 +20,7 @@ final public class Subscriber {
         properties.put(withId: ConfigOptions_Enum.RECORD_READ_TIMEOUT.string, withId: 500)
         
         guard let client = DeepstreamClient("0.0.0.0:6020", properties: properties) else {
-            print("Error: Unable to initialize client")
+            print("Subscriber: Unable to initialize client")
             return
         }
         
@@ -28,14 +28,14 @@ final public class Subscriber {
         self.subscribeRuntimeErrors(client: client)
         
         guard let loginResult = client.login(with: authData) else {
-            print("Error: Failed to login")
+            print("Subscriber: Failed to login")
             return
         }
         
         if (!loginResult.loggedIn()) {
-            print("Failed to login \(loginResult.getErrorEvent())")
+            print("Subscriber: Failed to login \(loginResult.getErrorEvent())")
         } else {
-            print("Login Success")
+            print("Subscriber: Login Success")
             self.subscribeEvent(client: client)
             self.makeSnapshot(client: client, recordName: "record/snapshot")
             self.hasRecord(client: client)
@@ -50,22 +50,22 @@ final public class Subscriber {
     
     private func hasRecord(client: DeepstreamClient) {
         guard let hasResult = client.record?.getRecord("record/has") else {
-            print("Has did not work")
+            print("Subscriber: Has did not work")
             return
         }
         
-        print("Has result: \(hasResult)")
+        print("Subscriber: Has result: \(hasResult)")
     }
     
     private func makeSnapshot(client: DeepstreamClient, recordName: String) {
         let exception = tryBlock {
             guard let snapshotResult : JsonElement = client.record?.snapshot(recordName) else {
-                print("Snapshot did not work")
+                print("Subscriber: Snapshot did not work")
                 return
             }
-            print("Snapshot result: \(snapshotResult)")
+            print("Subscriber: Snapshot result: \(snapshotResult)")
         }
-        print("exception: \(exception!)")
+        print("Subscriber: exception \(exception!)")
     }
     
     private func makeRpc(client: DeepstreamClient) {
@@ -79,7 +79,7 @@ final public class Subscriber {
                 return
             }
             
-            print("RPC success with data: \(rpcResponse.getData()!)")
+            print("Subscriber: RPC success with data: \(rpcResponse.getData()!)")
         }
         timer.fire()
     }
@@ -98,28 +98,28 @@ final public class Subscriber {
     
     private func subscribeList(client: DeepstreamClient) {
         guard let list = client.record?.getList("list/a") else {
-            print("Unable to get list: list/a")
+            print("Subscriber: Unable to get list: list/a")
             return
         }
         
         final class SubscribeListChangedListener : NSObject, ListChangedListener {
             func onListChanged(_ listName: String!, entries: JavaUtilListProtocol!) {
-                print("List \(listName) entries changed to \(entries)")
+                print("Subscriber: List \(listName) entries changed to \(entries)")
             }
         }
         list.subscribe(SubscribeListChangedListener())
         
         final class SubscribeListEntryChangedListener : NSObject, ListEntryChangedListener {
             func onEntryAdded(_ listName: String!, entry entry_: String!, position: jint) {
-                print("List \(listName) entry \(entry_) added at \(position)")
+                print("Subscriber: List \(listName) entry \(entry_) added at \(position)")
             }
             
             func onEntryRemoved(_ listName: String!, entry entry_: String!, position: jint) {
-                print("List \(listName) entry \(entry_) removed from \(position)")
+                print("Subscriber: List \(listName) entry \(entry_) removed from \(position)")
             }
             
             func onEntryMoved(_ listName: String!, entry entry_: String!, position: jint) {
-                print("List \(listName) entry \(entry_) move to \(position)")
+                print("Subscriber: List \(listName) entry \(entry_) move to \(position)")
             }
         }
         list.subscribe(with: SubscribeListEntryChangedListener())
@@ -127,18 +127,18 @@ final public class Subscriber {
     
     private func subscribeRecord(client: DeepstreamClient, recordName: String) {
         guard let record = client.record?.getRecord(recordName) else {
-            print("Unable to get recordName \(recordName)")
+            print("Subscriber: Unable to get recordName \(recordName)")
             return
         }
         
         final class SubscribeRecordChangedCallback : NSObject, RecordChangedCallback {
             func onRecordChanged(_ recordName: String!, data: JsonElement!) {
-                print("Record '\(recordName!)' changed, data is now: \(data!)")
+                print("Subscriber: Record '\(recordName!)' changed, data is now: \(data!)")
             }
         }
         
         record.subscribe(SubscribeRecordChangedCallback())
-        print("Record '\(record.name()!)' initial state: \(record.get()!)")
+        print("Subscriber: Record '\(record.name()!)' initial state: \(record.get()!)")
     }
     
     private func subscribeEvent(client: DeepstreamClient) {
@@ -146,14 +146,14 @@ final public class Subscriber {
         final class SubscriberEventListener : NSObject, EventListener {
             func onEvent(with eventName: String!, withId args: Any!) {
                 guard let parameters = args as? JsonArray else {
-                    print("Unable to cast args as JsonArray")
+                    print("Subscriber: Unable to cast args as JsonArray")
                     return
                 }
                 
                 let first = parameters.getWith(0).getAsString()
                 let second = parameters.getWith(1).getAsLong()
                 
-                print("Event '\(eventName!)' occurred with: \(first!) at \(second)")
+                print("Subscriber: Event '\(eventName!)' occurred with: \(first!) at \(second)")
             }
         }
         
@@ -164,11 +164,11 @@ final public class Subscriber {
         
         final class SubscriberPresenceEventListener : NSObject, PresenceEventListener {
             func onClientLogin(with username: String!) {
-                print("\(username!) logged in")
+                print("Subscriber: \(username!) logged in")
             }
             
             func onClientLogout(with username: String!) {
-                print("\(username!) logged out")
+                print("Subscriber: \(username!) logged out")
             }
         }
         
@@ -177,11 +177,11 @@ final public class Subscriber {
     
     private func queryClients(client: DeepstreamClient) {
         guard let clients = client.presence?.getAll() else {
-            print("Unable to get all clients")
+            print("Subscriber: Unable to get all clients")
             return
         }
                 
-        print("Clients currently connected:")
+        print("Subscriber: Clients currently connected:")
         for c : String in clients.toNSArray() {
            print("\(c) ", terminator:"")
         }

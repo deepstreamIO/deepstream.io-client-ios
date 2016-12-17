@@ -8,7 +8,12 @@
 
 import Foundation
 
-let publisher = Publisher()
-let subscriber = Subscriber()
+DispatchQueue.global().async {
+    let subscriber = Subscriber()
+}
+
+DispatchQueue.main.async {
+    let publisher = Publisher()
+}
 
 CFRunLoopRun()

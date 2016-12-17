@@ -21,12 +21,12 @@ final class PublisherListenListener: NSObject, ListenListener {
     }
     
     func onSubscription(forPatternAdded subscription: String!) -> jboolean {
-        print("Record \(subscription!) just subscribed")
+        print("Publisher: Record \(subscription!) just subscribed")
         self.handler(subscription, self.client)
         return true
     }
     
     func onSubscription(forPatternRemoved subscription: String!) {
-        print("Record \(subscription!) just unsubscribed")
+        print("Publisher: Record \(subscription!) just unsubscribed")
     }
 }

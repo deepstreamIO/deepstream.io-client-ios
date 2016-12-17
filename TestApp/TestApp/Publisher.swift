@@ -15,7 +15,7 @@ final public class Publisher {
         authData.addProperty(with: "username", with: "Publisher")
     
         guard let client = DeepstreamClient("0.0.0.0:6020") else {
-            print("Error: Unable to initialize client")
+            print("Publisher: Unable to initialize client")
             return
         }
         
@@ -23,14 +23,14 @@ final public class Publisher {
         self.subscribeRuntimeErrors(client: client)
         
         guard let loginResult = client.login(with: authData) else {
-            print("Error: Failed to login")
+            print("Publisher: Failed to login")
             return
         }
         
         if (!loginResult.loggedIn()) {
-            print("Provider Failed to login \(loginResult.getErrorEvent())")
+            print("Publisher: Provider Failed to login \(loginResult.getErrorEvent())")
         } else {
-            print("Provider Login Success")
+            print("Publisher: Provider Login Success")
             self.listenEvent(client: client)
             self.listenRecord(client: client)
             self.provideRpc(client: client)
@@ -39,7 +39,7 @@ final public class Publisher {
     
     private func listenRecord(client: DeepstreamClient) {
         guard let record = client.record else {
-            print("No record")
+            print("Publisher: No record")
             return
         }
         
@@ -52,7 +52,7 @@ final public class Publisher {
     
     private func updateRecord(subscription: String, client: DeepstreamClient) {
         guard let record = client.record?.getRecord(subscription) else {
-            print("Getting record for subscription '\(subscription)' failed")
+            print("Publisher: Getting record for subscription '\(subscription)' failed")
             return
         }
         
@@ -72,7 +72,7 @@ final public class Publisher {
     private func listenEvent(client: DeepstreamClient) {        
         client.event?.listen(with: "event/.*",
                              with: PublisherListenListener(handler: { (subscription, client) in
-                                print("Event \(subscription) just subscribed.")
+                                print("Publisher: Event \(subscription) just subscribed.")
                                 self.publishEvent(subscription: subscription, client: client);
                              }, client: client))
     }
@@ -107,10 +107,10 @@ final public class Publisher {
         
         client.rpc?.provide("add-numbers",
                             rpcRequestedListener: PublisherRpcRequestedListener { (rpcName, data, response) in
-                                print("Got an RPC request")
+                                print("Publisher: Got an RPC request")
                                 
                                 guard let numbers = data as? JsonArray else {
-                                    print("Unable to cast data to JsonArray")
+                                    print("Publisher: Unable to cast data to JsonArray")
                                     return
                                 }
                                 
@@ -125,7 +125,7 @@ final public class Publisher {
                                     let value = first + second
                                     response.send(value)
                                 default:
-                                    print("This intentionally randomly failed")
+                                    print("Publisher: This intentionally randomly failed")
                                 }
         })
     }
