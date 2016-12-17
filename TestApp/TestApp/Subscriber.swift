@@ -58,27 +58,33 @@ final public class Subscriber {
     }
     
     private func makeSnapshot(client: DeepstreamClient, recordName: String) {
-        guard let snapshotResult : JsonElement = client.record?.snapshot(recordName) else {
-            print("Snapshot did not work")
-            return
+        let exception = tryBlock {
+            guard let snapshotResult : JsonElement = client.record?.snapshot(recordName) else {
+                print("Snapshot did not work")
+                return
+            }
+            print("Snapshot result: \(snapshotResult)")
         }
-    
-        print("Snapshot result: \(snapshotResult)")
+        print("exception: \(exception!)")
     }
     
     private func makeRpc(client: DeepstreamClient) {
-        // TODO: Place in loop
-
-        let numbers : JavaUtilArrayList = JavaUtilArrayList(int: 2)
-        numbers.add(with: 0, withId: floor(Double(arc4random()) * 10))
-        numbers.add(with: 1, withId: floor(Double(arc4random()) * 10))
-        
-        guard let rpcResponse = client.rpc?.make("add-numbers", data: numbers) else {
-            print("RPC failed")
-            return
+        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            let numbers : JavaUtilArrayList = JavaUtilArrayList(int: 2)
+            numbers.add(with: 0, withId: NSNumber(value: floor(Double(arc4random()) * 10)))
+            numbers.add(with: 1, withId: NSNumber(value: floor(Double(arc4random()) * 10)))
+            
+            let exception = tryBlock {
+                guard let rpcResponse = client.rpc?.make("add-numbers", data: numbers) else {
+                    print("RPC failed")
+                    return
+                }
+                
+                print("RPC success with data: \(rpcResponse.getData())")
+            }
+            print("exception: \(exception)")
         }
-        
-        print("RPC success with data: \(rpcResponse.getData())")
+        timer.fire()
     }
     
     private func subscribeRuntimeErrors(client: DeepstreamClient) {
@@ -130,12 +136,12 @@ final public class Subscriber {
         
         final class SubscribeRecordChangedCallback : NSObject, RecordChangedCallback {
             func onRecordChanged(_ recordName: String!, data: JsonElement!) {
-                print("Record '\(recordName)' changed, data is now: \(data)")
+                print("Record '\(recordName!)' changed, data is now: \(data!)")
             }
         }
         
         record.subscribe(SubscribeRecordChangedCallback())
-        print("Record '\(record.name())' initial state: \(record.get())")
+        print("Record '\(record.name()!)' initial state: \(record.get()!)")
     }
     
     private func subscribeEvent(client: DeepstreamClient) {
@@ -150,7 +156,7 @@ final public class Subscriber {
                 let first = parameters.getWith(0).getAsString()
                 let second = parameters.getWith(1).getAsLong()
                 
-                print("Event '\(eventName!)' occurred with: \(first) at \(second)")
+                print("Event '\(eventName!)' occurred with: \(first!) at \(second)")
             }
         }
         
