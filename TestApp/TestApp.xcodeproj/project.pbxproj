@@ -81,39 +81,43 @@
 		FA0228E41E05D4090021FF62 /* Deepstream Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */,
 				FA0228E21E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift */,
+				FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */,
 				FA0228ED1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift */,
 			);
 			name = "Deepstream Extensions";
+			path = "Deepstream Extensions";
 			sourceTree = "<group>";
 		};
 		FA0228E51E05D4DA0021FF62 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				FAF515AD1E057CB900D2BB28 /* main.swift */,
-				FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */,
 				FABAE4511E05F55000D03090 /* ExceptionCatcher.h */,
+				FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */,
+				FAF515AD1E057CB900D2BB28 /* main.swift */,
 			);
 			name = App;
+			path = App;
 			sourceTree = "<group>";
 		};
 		FA0228E61E05D52A0021FF62 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */,
 				FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */,
+				FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */,
 			);
 			name = Implementations;
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 		FA66FCB51E05B33800D50190 /* Publisher */ = {
 			isa = PBXGroup;
 			children = (
-				FAF515B71E05912C00D2BB28 /* Publisher.swift */,
 				FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */,
+				FAF515B71E05912C00D2BB28 /* Publisher.swift */,
 			);
 			name = Publisher;
+			path = Publisher;
 			sourceTree = "<group>";
 		};
 		FA66FCB61E05B33D00D50190 /* Subscriber */ = {
@@ -122,15 +126,16 @@
 				FAF515B91E05913B00D2BB28 /* Subscriber.swift */,
 			);
 			name = Subscriber;
+			path = Subscriber;
 			sourceTree = "<group>";
 		};
 		FAF515A11E057CB900D2BB28 = {
 			isa = PBXGroup;
 			children = (
-				FAF515AC1E057CB900D2BB28 /* TestApp */,
-				FAF515AB1E057CB900D2BB28 /* Products */,
-				7570D6A7C3C7E6FA9E006592 /* Pods */,
 				022CC960D5805062465A8969 /* Frameworks */,
+				7570D6A7C3C7E6FA9E006592 /* Pods */,
+				FAF515AB1E057CB900D2BB28 /* Products */,
+				FAF515AC1E057CB900D2BB28 /* TestApp */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,8 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				FA0228E51E05D4DA0021FF62 /* App */,
-				FA0228E61E05D52A0021FF62 /* Implementations */,
 				FA0228E41E05D4090021FF62 /* Deepstream Extensions */,
+				FA0228E61E05D52A0021FF62 /* Implementations */,
 				FA66FCB51E05B33800D50190 /* Publisher */,
 				FA66FCB61E05B33D00D50190 /* Subscriber */,
 			);
@@ -236,7 +241,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

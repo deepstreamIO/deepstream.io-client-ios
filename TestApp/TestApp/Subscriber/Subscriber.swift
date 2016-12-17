@@ -65,7 +65,7 @@ final public class Subscriber {
             }
             print("Subscriber: Snapshot result: \(snapshotResult)")
         }
-        print("Subscriber: exception \(exception!)")
+        print("Subscriber: Exception \(exception!)")
     }
     
     private func makeRpc(client: DeepstreamClient) {
