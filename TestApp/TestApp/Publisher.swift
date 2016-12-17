@@ -8,6 +8,19 @@
 
 import Foundation
 
+extension DeepstreamClient
+{
+    // Needed as J2ObjC does not translate properties
+    // Required explicit getters/setters in Java
+    var record : RecordHandler? {
+        get {
+            return self.value(forKey: "record_") as? RecordHandler
+        }
+    }
+}
+
+
+
 final public class Publisher {
     
     init() {
@@ -38,7 +51,13 @@ final public class Publisher {
     }
     
     private func listenRecord(client: DeepstreamClient) {
+        guard let record = client.record else {
+            return
+        }
         
+        // let listenListener = ListenListener()
+        
+        // record.listen("record/.*", listenCallback: <#T##ListenListener!#>)
     }
     
     //private func updateRecord(subscription: String, client: DeepstreamClient, scheduledFuture: ScheduledFuture) {
