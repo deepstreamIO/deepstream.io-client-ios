@@ -43,7 +43,7 @@ final public class Publisher {
             return
         }
         
-        let handler = PublisherListener(handler: { (subscription, client) in
+        let handler = PublisherListenListener(handler: { (subscription, client) in
             self.updateRecord(subscription: subscription, client: client)
         }, client: client)
         
@@ -73,32 +73,9 @@ final public class Publisher {
         //timer.fire()
     }
     
-    private func listenEvent(client: DeepstreamClient) {
-        typealias PublisherListenerCallbackHandler = ((String, DeepstreamClient) -> Void)
-        
-        final class PublisherListener: NSObject, ListenListener {
-            
-            private var handler : PublisherListenerCallbackHandler!
-            private var client : DeepstreamClient!
-            
-            init(handler: @escaping PublisherListenerCallbackHandler, client: DeepstreamClient) {
-                self.handler = handler
-                self.client = client
-            }
-            
-            func onSubscription(forPatternAdded subscription: String!) -> jboolean {
-                print("Record \(subscription!) just subscribed")
-                self.handler(subscription, self.client)
-                return true
-            }
-            
-            func onSubscription(forPatternRemoved subscription: String!) {
-                print("Record \(subscription!) just unsubscribed")
-            }
-        }
-        
+    private func listenEvent(client: DeepstreamClient) {        
         client.event?.listen(with: "event/.*",
-                             with: PublisherListener(handler: { (subscription, client) in
+                             with: PublisherListenListener(handler: { (subscription, client) in
                                 print("Event \(subscription) just subscribed.")
                                 self.publishEvent(subscription: subscription, client: client);
                              }, client: client))

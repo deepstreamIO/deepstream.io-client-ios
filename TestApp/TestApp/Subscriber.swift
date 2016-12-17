@@ -139,6 +139,9 @@ final public class Subscriber {
     }
     
     private func queryClients(client: DeepstreamClient) {
-        
+        guard let clients = client.presence else {
+            print("")
+            return
+        }
     }
 }
