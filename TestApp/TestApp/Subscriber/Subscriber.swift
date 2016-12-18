@@ -136,7 +136,7 @@ final public class Subscriber {
         
         final class SubscribeRecordChangedCallback : NSObject, RecordChangedCallback {
             func onRecordChanged(_ recordName: String!, data: JsonElement!) {
-                print("Subscriber: Record '\(recordName!)' changed, data is now: \(data!)")
+                print("Subscriber: Record '\(recordName!)' changed, data is now: \(data.dict)")
             }
         }
         
