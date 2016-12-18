@@ -110,15 +110,19 @@ final public class Publisher {
                                     return
                                 }
                                 
-                                let first = numbers.getWith(0).getAsDouble()
-                                let second = numbers.getWith(1).getAsDouble()
+                                guard let array = numbers.array as? [Double] else {
+                                    print("Publisher: Unable to cast data to Swift Array")
+                                    return
+                                }
+                                
+                                if (array.count < 2) { return }
                                 
                                 let random = (Double(arc4random()) / Double(UInt32.max))
                                 switch (random) {
                                 case 0..<0.2:
                                     response.reject()
                                 case 0..<0.7:
-                                    let value = first + second
+                                    let value = array[0] + array[1]
                                     response.send(value)
                                 default:
                                     print("Publisher: This intentionally randomly failed")
