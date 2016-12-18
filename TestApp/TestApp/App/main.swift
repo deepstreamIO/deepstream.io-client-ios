@@ -12,8 +12,8 @@ DispatchQueue.main.async {
     let publisher = Publisher()
 }
 
-//DispatchQueue.global().async {
-//    let subscriber = Subscriber()
-//}
+DispatchQueue.global().async {
+    let subscriber = Subscriber()
+}
 
 RunLoop.main.run()
