@@ -33,7 +33,7 @@ final public class Publisher {
             self.listenEvent(client: client)
             self.listenRecord(client: client)
             self.provideRpc(client: client)
-            self.updateRecordWithAck(recordName: "testRecord", client: client)
+//            self.updateRecordWithAck(recordName: "testRecord", client: client)
         }
     }
     
@@ -66,8 +66,10 @@ final public class Publisher {
                 "count" : NSNumber(value: count)
             ]
             count += 1
+            print("Publisher: Setting record \(data)")
             record.set(data.jsonElement)
         }
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
         timer.fire()
     }
     
@@ -83,8 +85,10 @@ final public class Publisher {
         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
             let timeInterval : TimeInterval = Date().timeIntervalSince1970
             let data : [Any] = ["An event just happened", timeInterval]
+            print("Publisher: Emitting event \(data)")
             client.event?.emit(with: subscription, withId: data.jsonElement)
         }
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
         timer.fire()
     }
 
@@ -141,7 +145,7 @@ final public class Publisher {
             return
         }
     
-        guard let result = record.setWithAckWith("number", withId: 23) else {
+        guard let result = record.setWithAckWith("number", withId: 2.jsonElement) else {
             print("Publisher: No result")
             return
         }

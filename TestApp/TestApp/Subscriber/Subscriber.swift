@@ -69,20 +69,20 @@ final public class Subscriber {
     }
     
     private func makeRpc(client: DeepstreamClient) {
-        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            
+        let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
             let data = [
-                NSNumber(value: floor(Double(arc4random()) * 10)),
-                NSNumber(value: floor(Double(arc4random()) * 10))
+                floor(Double(arc4random()) * 10),
+                floor(Double(arc4random()) * 10)
             ]
-        
+
             guard let rpcResponse = client.rpc?.make("add-numbers", data: data.jsonElement) else {
                 print("RPC failed")
                 return
             }
-            
+
             print("Subscriber: RPC success with data: \(rpcResponse.getData()!)")
         }
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
         timer.fire()
     }
     
