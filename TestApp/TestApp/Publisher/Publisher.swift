@@ -33,7 +33,7 @@ final public class Publisher {
             self.listenEvent(client: client)
             self.listenRecord(client: client)
             self.provideRpc(client: client)
-            self.updateRecordWithAck(recordName: "testRecord", client: client)
+            //self.updateRecordWithAck(recordName: "testRecord", client: client)
         }
     }
     
