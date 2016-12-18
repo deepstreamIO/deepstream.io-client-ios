@@ -182,7 +182,7 @@ final public class Subscriber {
         }
                 
         print("Subscriber: Clients currently connected:")
-        for c : String in clients.toNSArray() {
+        for c : String in clients.toArray() {
            print("\(c) ", terminator:"")
         }
         print()
