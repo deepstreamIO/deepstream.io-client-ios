@@ -53,9 +53,9 @@ final public class Publisher {
             let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
                 let timeInterval : TimeInterval = Date().timeIntervalSince1970
                 let data : [String : Any] = [
-                    "timer" : NSNumber(value: timeInterval),
+                    "timer" : timeInterval,
                     "id" : subscription,
-                    "count" : NSNumber(value: count)
+                    "count" : count
                 ]
                 count += 1
                 print("Publisher: Setting record \(data)")
