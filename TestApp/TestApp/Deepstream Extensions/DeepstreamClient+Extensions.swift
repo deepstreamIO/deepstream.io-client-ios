@@ -11,27 +11,27 @@ import Foundation
 extension DeepstreamClient {
     // Needed as J2ObjC does not translate properties
     // Required explicit getters/setters in Java
-    var record : RecordHandler? {
+    var record : RecordHandler {
         get {
-            return self.value(forKey: "record_") as? RecordHandler
+            return self.getRecordHandler()
         }
     }
     
-    var event : EventHandler? {
+    var event : EventHandler {
         get {
-            return self.value(forKey: "event_") as? EventHandler
+            return self.getEventHandler()
         }
     }
     
-    var rpc : RpcHandler? {
+    var rpc : RpcHandler {
         get {
-            return self.value(forKey: "rpc_") as? RpcHandler
+            return self.getRpcHandler()
         }
     }
     
-    var presence : PresenceHandler? {
+    var presence : PresenceHandler {
         get {
-            return self.value(forKey: "presence_") as? PresenceHandler
+            return self.getRecordHandler()
         }
     }
 }
