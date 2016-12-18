@@ -13,12 +13,13 @@ final public class Subscriber {
     init() {
         let authData = ["username" : "Yasser"]
         
-        let properties : JavaUtilProperties = JavaUtilProperties()
-        properties.put(withId: "SUBSCRIPTION_TIMEOUT", withId: 500)
-        properties.put(withId: "RECORD_READ_ACK_TIMEOUT", withId: 500)
-        properties.put(withId: "RECORD_READ_TIMEOUT", withId: 500)
+        let properties : [String : Int] = [
+            "SUBSCRIPTION_TIMEOUT" : 500,
+            "RECORD_READ_ACK_TIMEOUT" : 500,
+            "RECORD_READ_TIMEOUT" : 500,
+        ]
         
-        guard let client = DeepstreamClient("0.0.0.0:6020", properties: properties) else {
+        guard let client = DeepstreamClient("0.0.0.0:6020", properties: properties.toProperties) else {
             print("Subscriber: Unable to initialize client")
             return
         }
