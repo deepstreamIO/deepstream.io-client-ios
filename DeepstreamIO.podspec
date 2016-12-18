@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target     = '8.3'
   s.watchos.deployment_target = '2.0'
-  s.osx.deployment_target     = '10.6'
+  s.osx.deployment_target     = '10.9'
   s.osx.frameworks            = 'ExceptionHandling'
 end
 
