@@ -84,9 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */,
+				FA09091C1E06AF58003CF591 /* GSON+Types.swift */,
 				FA0228ED1E05DA1F0021FF62 /* JavaUtilArrayList+Extension.swift */,
 				FA0EC89C1E06C61C00C5A2D6 /* JavaUtilProperties+Extension.swift */,
-				FA09091C1E06AF58003CF591 /* GSON+Types.swift */,
 			);
 			path = "Deepstream Extensions";
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
