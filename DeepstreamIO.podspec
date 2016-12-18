@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.watchos.vendored_libraries  = 'lib/iosRelease/libdeepstream.io-client-java-j2objc.a'
   s.osx.vendored_libraries      = 'lib/x86_64Release/libdeepstream.io-client-java-j2objc.a'
 
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
   s.xcconfig = {
     'HEADER_SEARCH_PATHS'  => '${PODS_ROOT}/DeepstreamIO/j2objc/include ${PODS_ROOT}/DeepstreamIO/src/main/objc'
   }
