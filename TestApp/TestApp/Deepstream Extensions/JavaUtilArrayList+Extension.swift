@@ -1,5 +1,5 @@
 //
-//  JavaUtilsArrayList+Extension.swift
+//  JavaUtilArrayList+Extension.swift
 //  TestApp
 //
 //  Created by Akram Hussein on 17/12/2016.

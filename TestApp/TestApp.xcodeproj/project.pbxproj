@@ -12,8 +12,9 @@
 		FA0228DD1E05BF4F0021FF62 /* RunTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */; };
 		FA0228DF1E05BF800021FF62 /* DeepstreamClient+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */; };
 		FA0228EC1E05D9C80021FF62 /* PublishListenListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */; };
-		FA0228EE1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228ED1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift */; };
+		FA0228EE1E05DA1F0021FF62 /* JavaUtilArrayList+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228ED1E05DA1F0021FF62 /* JavaUtilArrayList+Extension.swift */; };
 		FA09091D1E06AF58003CF591 /* GSON+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09091C1E06AF58003CF591 /* GSON+Types.swift */; };
+		FA0EC89D1E06C61C00C5A2D6 /* JavaUtilProperties+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0EC89C1E06C61C00C5A2D6 /* JavaUtilProperties+Extension.swift */; };
 		FAF515AE1E057CB900D2BB28 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515AD1E057CB900D2BB28 /* main.swift */; };
 		FAF515B81E05912C00D2BB28 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515B71E05912C00D2BB28 /* Publisher.swift */; };
 		FAF515BA1E05913B00D2BB28 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515B91E05913B00D2BB28 /* Subscriber.swift */; };
@@ -39,8 +40,9 @@
 		FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeHandler.swift; sourceTree = "<group>"; };
 		FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeepstreamClient+Extensions.swift"; sourceTree = "<group>"; };
 		FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishListenListener.swift; sourceTree = "<group>"; };
-		FA0228ED1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JavaUtilsArrayList+Extension.swift"; sourceTree = "<group>"; };
+		FA0228ED1E05DA1F0021FF62 /* JavaUtilArrayList+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JavaUtilArrayList+Extension.swift"; sourceTree = "<group>"; };
 		FA09091C1E06AF58003CF591 /* GSON+Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GSON+Types.swift"; sourceTree = "<group>"; };
+		FA0EC89C1E06C61C00C5A2D6 /* JavaUtilProperties+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JavaUtilProperties+Extension.swift"; sourceTree = "<group>"; };
 		FABAE4511E05F55000D03090 /* ExceptionCatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExceptionCatcher.h; sourceTree = "<group>"; };
 		FAF515AA1E057CB900D2BB28 /* TestApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF515AD1E057CB900D2BB28 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -82,7 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */,
-				FA0228ED1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift */,
+				FA0228ED1E05DA1F0021FF62 /* JavaUtilArrayList+Extension.swift */,
+				FA0EC89C1E06C61C00C5A2D6 /* JavaUtilProperties+Extension.swift */,
 				FA09091C1E06AF58003CF591 /* GSON+Types.swift */,
 			);
 			path = "Deepstream Extensions";
@@ -248,9 +251,10 @@
 			files = (
 				FAF515BA1E05913B00D2BB28 /* Subscriber.swift in Sources */,
 				FAF515B81E05912C00D2BB28 /* Publisher.swift in Sources */,
+				FA0EC89D1E06C61C00C5A2D6 /* JavaUtilProperties+Extension.swift in Sources */,
 				FA0228EC1E05D9C80021FF62 /* PublishListenListener.swift in Sources */,
 				FAF515AE1E057CB900D2BB28 /* main.swift in Sources */,
-				FA0228EE1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift in Sources */,
+				FA0228EE1E05DA1F0021FF62 /* JavaUtilArrayList+Extension.swift in Sources */,
 				FA0228DD1E05BF4F0021FF62 /* RunTimeHandler.swift in Sources */,
 				FA0228DF1E05BF800021FF62 /* DeepstreamClient+Extensions.swift in Sources */,
 				FA0228DB1E05BEDE0021FF62 /* AppConnectionStateListener.swift in Sources */,
