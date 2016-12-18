@@ -80,12 +80,8 @@ final public class Publisher {
     private func publishEvent(subscription: String, client: DeepstreamClient) {
         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
             let timeInterval : TimeInterval = Date().timeIntervalSince1970
-            
-            let data : JsonArray = JsonArray()
-            data.add(with: "An event just happened")
-            data.add(with: NSNumber(value: timeInterval))
-            
-            client.event?.emit(with: subscription, withId: data)
+            let data : [Any] = ["An event just happened", timeInterval]
+            client.event?.emit(with: subscription, withId: data.jsonElement)
         }
         timer.fire()
     }
