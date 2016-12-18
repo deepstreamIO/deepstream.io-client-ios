@@ -1,5 +1,5 @@
 //
-//  GSON+Foundation.swift
+//  GSON+Types.swift
 //  TestApp
 //
 //  Created by Akram Hussein on 18/12/2016.
@@ -34,11 +34,22 @@ extension Dictionary where Key: ExpressibleByStringLiteral {
 
 extension JsonElement {
     static let gson = GsonBuilder().enableComplexMapKeySerialization().create()
+    
     var dict : [String : Any] {
         get {
             let serialized = JsonElement.gson?.toJson(with: self)
             let data = serialized!.data(using: .utf8)
             return try! JSONSerialization.jsonObject(with: data!, options: []) as! [String : Any]
+        }
+    }
+}
+
+extension JsonArray {
+    var array : [Any] {
+        get {
+            let serialized = JsonElement.gson?.toJson(with: self)
+            let data = serialized!.data(using: .utf8)
+            return try! JSONSerialization.jsonObject(with: data!, options: []) as! [Any]
         }
     }
 }
