@@ -31,7 +31,7 @@ extension DeepstreamClient {
     
     var presence : PresenceHandler {
         get {
-            return self.getRecordHandler()
+            return self.getPresenceHandler()
         }
     }
 }
