@@ -30,6 +30,24 @@ extension Dictionary where Key: ExpressibleByStringLiteral {
     }
 }
 
+extension IntegerLiteralType {
+    var jsonElement : JsonElement {
+        get {
+            let data = try! JSONSerialization.data(withJSONObject: self, options: [])
+            let json = String(data: data, encoding: String.Encoding.utf8)
+            return Gson().fromJson(with: json, with: JsonObject_class_()) as! JsonObject
+        }
+    }
+}
+
+extension FloatingPoint {
+    var jsonElement : JsonElement {
+        get {
+            return Gson().toJsonTree(withId: self)
+        }
+    }
+}
+
 // MARK: - GSON -> Foundation
 
 extension JsonElement {

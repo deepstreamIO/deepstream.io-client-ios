@@ -49,7 +49,7 @@ final public class Subscriber {
     }
     
     private func hasRecord(client: DeepstreamClient) {
-        guard let hasResult = client.record?.getRecord("record/has") else {
+        guard let hasResult = client.record.getRecord("record/has") else {
             print("Subscriber: Has did not work")
             return
         }
@@ -59,7 +59,7 @@ final public class Subscriber {
     
     private func makeSnapshot(client: DeepstreamClient, recordName: String) {
         let exception = tryBlock {
-            guard let snapshotResult = client.record?.snapshot(recordName) else {
+            guard let snapshotResult = client.record.snapshot(recordName) else {
                 print("Subscriber: Snapshot did not work")
                 return
             }
@@ -69,20 +69,20 @@ final public class Subscriber {
     }
     
     private func makeRpc(client: DeepstreamClient) {
-        let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
             let data = [
                 floor(Double(arc4random()) * 10),
                 floor(Double(arc4random()) * 10)
             ]
 
-            guard let rpcResponse = client.rpc?.make("add-numbers", data: data.jsonElement) else {
+            guard let rpcResponse = client.rpc.make("add-numbers", data: data.jsonElement) else {
                 print("RPC failed")
                 return
             }
 
             print("Subscriber: RPC success with data: \(rpcResponse.getData()!)")
         }
-        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
         timer.fire()
     }
     
@@ -95,17 +95,17 @@ final public class Subscriber {
     }
     
     private func subscribeAnonymousRecord(client: DeepstreamClient) {
-        let _ = client.record?.getAnonymousRecord()
+        let _ = client.record.getAnonymousRecord()
     }
     
     private func subscribeList(client: DeepstreamClient) {
-        guard let list = client.record?.getList("list/a") else {
+        guard let list = client.record.getList("list/a") else {
             print("Subscriber: Unable to get list: list/a")
             return
         }
         
         final class SubscribeListChangedListener : NSObject, ListChangedListener {
-            func onListChanged(_ listName: String!, entries: JavaUtilListProtocol!) {
+            func onListChanged(_ listName: String!, entries: IOSObjectArray!) {
                 print("Subscriber: List \(listName) entries changed to \(entries)")
             }
         }
@@ -128,7 +128,7 @@ final public class Subscriber {
     }
     
     private func subscribeRecord(client: DeepstreamClient, recordName: String) {
-        guard let record = client.record?.getRecord(recordName) else {
+        guard let record = client.record.getRecord(recordName) else {
             print("Subscriber: Unable to get recordName \(recordName)")
             return
         }
@@ -166,7 +166,7 @@ final public class Subscriber {
             }
         }
         
-        client.event?.subscribe(with: "event/a", with: SubscriberEventListener())
+        client.event.subscribe(with: "event/a", with: SubscriberEventListener())
     }
     
     private func subscribePresence(client: DeepstreamClient) {
@@ -181,18 +181,20 @@ final public class Subscriber {
             }
         }
         
-        client.presence?.subscribe(with: SubscriberPresenceEventListener())
+        client.presence.subscribe(with: SubscriberPresenceEventListener())
     }
     
     private func queryClients(client: DeepstreamClient) {
-        guard let clients = client.presence?.getAll() else {
+        guard let clients = client.presence.getAll() else {
             print("Subscriber: Unable to get all clients")
             return
         }
-                
+        
         print("Subscriber: Clients currently connected:")
-        for c : String in clients.toArray() {
-           print("\(c) ", terminator:"")
+        for i : Int32 in 0..<clients.length() {
+            if let c = clients.object(at: UInt(i)) {
+                print("\(c) ", terminator:"")
+            }
         }
         print()
     }

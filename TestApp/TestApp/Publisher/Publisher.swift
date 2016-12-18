@@ -38,10 +38,7 @@ final public class Publisher {
     }
     
     private func listenRecord(client: DeepstreamClient) {
-        guard let record = client.record else {
-            print("Publisher: No record")
-            return
-        }
+        let record = client.record
         
         let handler = PublisherListenListener(handler: { (subscription, client) in
             self.updateRecord(subscription: subscription, client: client)
@@ -51,7 +48,7 @@ final public class Publisher {
     }
     
     private func updateRecord(subscription: String, client: DeepstreamClient) {
-        guard let record = client.record?.getRecord(subscription) else {
+        guard let record = client.record.getRecord(subscription) else {
             print("Publisher: Getting record for subscription '\(subscription)' failed")
             return
         }
@@ -69,12 +66,12 @@ final public class Publisher {
             print("Publisher: Setting record \(data)")
             record.set(data.jsonElement)
         }
-        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
         timer.fire()
     }
     
     private func listenEvent(client: DeepstreamClient) {        
-        client.event?.listen(with: "event/.*",
+        client.event.listen(with: "event/.*",
                              with: PublisherListenListener(handler: { (subscription, client) in
                                 print("Publisher: Event \(subscription) just subscribed.")
                                 self.publishEvent(subscription: subscription, client: client);
@@ -86,9 +83,9 @@ final public class Publisher {
             let timeInterval : TimeInterval = Date().timeIntervalSince1970
             let data : [Any] = ["An event just happened", timeInterval]
             print("Publisher: Emitting event \(data)")
-            client.event?.emit(with: subscription, withId: data.jsonElement)
+//            client.event?.emit(with: subscription, withId: data.jsonElement)
         }
-        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
         timer.fire()
     }
 
@@ -107,7 +104,7 @@ final public class Publisher {
             }
         }
         
-        client.rpc?.provide("add-numbers",
+        client.rpc.provide("add-numbers",
                             rpcRequestedListener: PublisherRpcRequestedListener { (rpcName, data, response) in
                                 print("Publisher: Got an RPC request")
                                 
@@ -140,7 +137,7 @@ final public class Publisher {
     }
 
     private func updateRecordWithAck(recordName: String, client: DeepstreamClient) {
-        guard let record = client.record?.getRecord(recordName) else {
+        guard let record = client.record.getRecord(recordName) else {
             print("Publisher: No record name \(recordName)")
             return
         }
