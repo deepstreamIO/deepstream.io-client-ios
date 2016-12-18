@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.social_media_url          = "http://twitter.com/deepstreamio"
 
   s.source                    = { :http => "http://s3.amazonaws.com/ds-server-artifacts/IOS.zip" }
-  # s.source                    = { :path => "/Users/ahussein/Developer/deepstream/DeepstreamIO/" }
   s.requires_arc              = true
 
   s.public_header_files       = 'src/DeepstreamIO.h'
