@@ -15,9 +15,9 @@ final public class Subscriber {
         authData.addProperty(with: "username", with: "Yasser")
         
         let properties : JavaUtilProperties = JavaUtilProperties()
-        properties.put(withId: ConfigOptions_Enum.SUBSCRIPTION_TIMEOUT.string, withId: 500)
-        properties.put(withId: ConfigOptions_Enum.RECORD_READ_ACK_TIMEOUT.string, withId: 500)
-        properties.put(withId: ConfigOptions_Enum.RECORD_READ_TIMEOUT.string, withId: 500)
+        properties.put(withId: "SUBSCRIPTION_TIMEOUT", withId: 500)
+        properties.put(withId: "RECORD_READ_ACK_TIMEOUT", withId: 500)
+        properties.put(withId: "RECORD_READ_TIMEOUT", withId: 500)
         
         guard let client = DeepstreamClient("0.0.0.0:6020", properties: properties) else {
             print("Subscriber: Unable to initialize client")

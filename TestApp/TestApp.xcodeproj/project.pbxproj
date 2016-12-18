@@ -11,7 +11,6 @@
 		FA0228DB1E05BEDE0021FF62 /* AppConnectionStateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */; };
 		FA0228DD1E05BF4F0021FF62 /* RunTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */; };
 		FA0228DF1E05BF800021FF62 /* DeepstreamClient+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */; };
-		FA0228E31E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228E21E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift */; };
 		FA0228EC1E05D9C80021FF62 /* PublishListenListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */; };
 		FA0228EE1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228ED1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift */; };
 		FAF515AE1E057CB900D2BB28 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515AD1E057CB900D2BB28 /* main.swift */; };
@@ -38,7 +37,6 @@
 		FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConnectionStateListener.swift; sourceTree = "<group>"; };
 		FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeHandler.swift; sourceTree = "<group>"; };
 		FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeepstreamClient+Extensions.swift"; sourceTree = "<group>"; };
-		FA0228E21E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigOptions_Enum+Extensions.swift"; sourceTree = "<group>"; };
 		FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishListenListener.swift; sourceTree = "<group>"; };
 		FA0228ED1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JavaUtilsArrayList+Extension.swift"; sourceTree = "<group>"; };
 		FABAE4511E05F55000D03090 /* ExceptionCatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExceptionCatcher.h; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 		FA0228E41E05D4090021FF62 /* Deepstream Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FA0228E21E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift */,
 				FA0228DE1E05BF800021FF62 /* DeepstreamClient+Extensions.swift */,
 				FA0228ED1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift */,
 			);
@@ -252,7 +249,6 @@
 				FAF515AE1E057CB900D2BB28 /* main.swift in Sources */,
 				FA0228EE1E05DA1F0021FF62 /* JavaUtilsArrayList+Extension.swift in Sources */,
 				FA0228DD1E05BF4F0021FF62 /* RunTimeHandler.swift in Sources */,
-				FA0228E31E05D06F0021FF62 /* ConfigOptions_Enum+Extensions.swift in Sources */,
 				FA0228DF1E05BF800021FF62 /* DeepstreamClient+Extensions.swift in Sources */,
 				FA0228DB1E05BEDE0021FF62 /* AppConnectionStateListener.swift in Sources */,
 			);
