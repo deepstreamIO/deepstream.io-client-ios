@@ -58,12 +58,14 @@ final public class Publisher {
         var count = 0
         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
             let timeInterval : TimeInterval = Date().timeIntervalSince1970
-            let data : JsonObject = JsonObject()
-            data.addProperty(with: "timer", with: NSNumber(value: timeInterval))
-            data.addProperty(with: "id", with: subscription)
-            data.addProperty(with: "count", with: NSNumber(value: count))
+
+            let data : [String : Any] = [
+                "timer" : NSNumber(value: timeInterval),
+                "id" : subscription,
+                "count" : NSNumber(value: count)
+            ]
             count += 1
-            record.set(data)
+            record.set(data.jsonElement)
         }
         timer.fire()
     }
