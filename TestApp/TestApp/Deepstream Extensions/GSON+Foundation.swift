@@ -32,11 +32,11 @@ extension Dictionary where Key: ExpressibleByStringLiteral {
 
 // MARK: - GSON -> Foundation
 
-extension JsonObject {
+extension JsonElement {
     static let gson = GsonBuilder().enableComplexMapKeySerialization().create()
     var dict : [String : Any] {
         get {
-            let serialized = JsonObject.gson?.toJson(with: self)
+            let serialized = JsonElement.gson?.toJson(with: self)
             let data = serialized!.data(using: .utf8)
             return try! JSONSerialization.jsonObject(with: data!, options: []) as! [String : Any]
         }
