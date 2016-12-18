@@ -106,7 +106,7 @@ final public class Publisher {
                                 print("Publisher: Got an RPC request")
                                 
                                 guard let numbers = (data as? JsonArray)?.array as? [Double] else {
-                                    print("Publisher: Unable to cast data to JsonArray")
+                                    print("Publisher: Unable to cast data to Array")
                                     return
                                 }
 
