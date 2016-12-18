@@ -33,6 +33,7 @@ final public class Publisher {
             self.listenEvent(client: client)
             self.listenRecord(client: client)
             self.provideRpc(client: client)
+            self.updateRecordWithAck(recordName: "testRecord", client: client)
         }
     }
     
@@ -132,5 +133,24 @@ final public class Publisher {
     
     private func subscribeConnectionChanges(client: DeepstreamClient) {
         client.addConnectionChangeListener(with: AppConnectionStateListener())
+    }
+
+    private func updateRecordWithAck(recordName: String, client: DeepstreamClient) {
+        guard let record = client.record?.getRecord(recordName) else {
+            print("Publisher: No record name \(recordName)")
+            return
+        }
+    
+        guard let result = record.setWithAckWith("number", withId: 23) else {
+            print("Publisher: No result")
+            return
+        }
+        
+        let error = result.getResult()
+        if (error == nil) {
+            print("Record set successfully with ack")
+        } else {
+            print("Record wasn't able to be set, error: \(error)")
+        }
     }
 }
