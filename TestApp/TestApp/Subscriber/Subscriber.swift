@@ -49,7 +49,7 @@ final public class Subscriber {
     }
     
     private func hasRecord(client: DeepstreamClient) {
-        guard let hasResult = client.record.getRecord("record/has") else {
+        guard let hasResult = client.record.has("record/has") else {
             print("Subscriber: Has did not work")
             return
         }
