@@ -11,8 +11,7 @@ import Foundation
 final public class Subscriber {
     
     init() {
-        let authData : JsonObject = JsonObject()
-        authData.addProperty(with: "username", with: "Yasser")
+        let authData = ["username" : "Yasser"]
         
         let properties : JavaUtilProperties = JavaUtilProperties()
         properties.put(withId: "SUBSCRIPTION_TIMEOUT", withId: 500)
@@ -27,7 +26,7 @@ final public class Subscriber {
         self.subscribeConnectionChanges(client: client)
         self.subscribeRuntimeErrors(client: client)
         
-        guard let loginResult = client.login(with: authData) else {
+        guard let loginResult = client.login(with: authData.jsonElement) else {
             print("Subscriber: Failed to login")
             return
         }

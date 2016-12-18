@@ -11,8 +11,7 @@ import Foundation
 final public class Publisher {
     
     init() {
-        let authData : JsonObject = JsonObject()
-        authData.addProperty(with: "username", with: "Publisher")
+        let authData = ["username" : "Publisher"]
     
         guard let client = DeepstreamClient("0.0.0.0:6020") else {
             print("Publisher: Unable to initialize client")
@@ -22,7 +21,7 @@ final public class Publisher {
         self.subscribeConnectionChanges(client: client)
         self.subscribeRuntimeErrors(client: client)
         
-        guard let loginResult = client.login(with: authData) else {
+        guard let loginResult = client.login(with: authData.jsonElement) else {
             print("Publisher: Failed to login")
             return
         }
