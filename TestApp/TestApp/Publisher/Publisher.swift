@@ -48,45 +48,44 @@ final public class Publisher {
     }
     
     private func updateRecord(subscription: String, client: DeepstreamClient) {
-        guard let record = client.record.getRecord(subscription) else {
-            print("Publisher: Getting record for subscription '\(subscription)' failed")
-            return
+        DispatchQueue.main.async {
+            var count = 0
+            let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+                let timeInterval : TimeInterval = Date().timeIntervalSince1970
+                let data : [String : Any] = [
+                    "timer" : NSNumber(value: timeInterval),
+                    "id" : subscription,
+                    "count" : NSNumber(value: count)
+                ]
+                count += 1
+                print("Publisher: Setting record \(data)")
+                client.record.getRecord(subscription)!.set(data.jsonElement)
+            }
+            RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
+            timer.fire()
         }
-        
-        var count = 0
-        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            let timeInterval : TimeInterval = Date().timeIntervalSince1970
-
-            let data : [String : Any] = [
-                "timer" : NSNumber(value: timeInterval),
-                "id" : subscription,
-                "count" : NSNumber(value: count)
-            ]
-            count += 1
-            print("Publisher: Setting record \(data)")
-            record.set(data.jsonElement)
-        }
-        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
-        timer.fire()
     }
     
     private func listenEvent(client: DeepstreamClient) {        
         client.event.listen(with: "event/.*",
-                             with: PublisherListenListener(handler: { (subscription, client) in
+                            with: PublisherListenListener(handler: { (subscription, client) in
                                 print("Publisher: Event \(subscription) just subscribed.")
-                                self.publishEvent(subscription: subscription, client: client);
+                                self.publishEvent(subscription: subscription, client: client)
                              }, client: client))
     }
+
     
     private func publishEvent(subscription: String, client: DeepstreamClient) {
-        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            let timeInterval : TimeInterval = Date().timeIntervalSince1970
-            let data : [Any] = ["An event just happened", timeInterval]
-            print("Publisher: Emitting event \(data)")
-//            client.event?.emit(with: subscription, withId: data.jsonElement)
+        DispatchQueue.main.async {
+            let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+                let timeInterval : TimeInterval = Date().timeIntervalSince1970
+                let data : [Any] = ["An event just happened", timeInterval]
+                print("Publisher: Emitting event \(data)")
+                client.event.emit(with: subscription, withId: data.jsonElement)
+            }
+            RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+            timer.fire()
         }
-        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
-        timer.fire()
     }
 
     private func provideRpc(client: DeepstreamClient) {
