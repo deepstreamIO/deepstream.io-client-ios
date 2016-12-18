@@ -41,7 +41,6 @@
 		FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishListenListener.swift; sourceTree = "<group>"; };
 		FA09091C1E06AF58003CF591 /* GSON+Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GSON+Types.swift"; sourceTree = "<group>"; };
 		FA0EC89C1E06C61C00C5A2D6 /* JavaUtilProperties+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JavaUtilProperties+Extension.swift"; sourceTree = "<group>"; };
-		FABAE4511E05F55000D03090 /* ExceptionCatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExceptionCatcher.h; sourceTree = "<group>"; };
 		FAF515AA1E057CB900D2BB28 /* TestApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF515AD1E057CB900D2BB28 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -91,7 +90,6 @@
 		FA0228E51E05D4DA0021FF62 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				FABAE4511E05F55000D03090 /* ExceptionCatcher.h */,
 				FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */,
 				FAF515AD1E057CB900D2BB28 /* main.swift */,
 			);

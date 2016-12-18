@@ -58,14 +58,16 @@ final public class Subscriber {
     }
     
     private func makeSnapshot(client: DeepstreamClient, recordName: String) {
-        let exception = tryBlock {
-            guard let snapshotResult = client.record.snapshot(recordName) else {
-                print("Subscriber: Snapshot did not work")
-                return
-            }
+        guard let snapshotResult = client.record.snapshot(recordName) else {
+            print("Subscriber: Snapshot did not work")
+            return
+        }
+        
+        if (snapshotResult.hasError()) {
+            print("Subscriber: Snapshot did not work because: \(snapshotResult.getError().getMessage())")
+        } else {
             print("Subscriber: Snapshot result: \(snapshotResult)")
         }
-        print("Subscriber: Exception \(exception!)")
     }
     
     private func makeRpc(client: DeepstreamClient) {

@@ -10,7 +10,6 @@
 #define TestApp_Bridging_Header_h
 
 #import <DeepstreamIO/DeepstreamIO.h>
-#import "ExceptionCatcher.h"
 
 #endif /* TestApp_Bridging_Header_h */
 

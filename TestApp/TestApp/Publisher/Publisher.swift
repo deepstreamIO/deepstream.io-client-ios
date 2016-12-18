@@ -33,7 +33,7 @@ final public class Publisher {
             self.listenEvent(client: client)
             self.listenRecord(client: client)
             self.provideRpc(client: client)
-//            self.updateRecordWithAck(recordName: "testRecord", client: client)
+            self.updateRecordWithAck(recordName: "testRecord", client: client)
         }
     }
     
@@ -141,7 +141,7 @@ final public class Publisher {
             return
         }
     
-        guard let result = record.setWithAckWith("number", withId: 2.jsonElement) else {
+        guard let result = record.setWithAckWith("number", withId: 2) else {
             print("Publisher: No result")
             return
         }
