@@ -105,24 +105,19 @@ final public class Publisher {
                             rpcRequestedListener: PublisherRpcRequestedListener { (rpcName, data, response) in
                                 print("Publisher: Got an RPC request")
                                 
-                                guard let numbers = data as? JsonArray else {
+                                guard let numbers = (data as? JsonArray)?.array as? [Double] else {
                                     print("Publisher: Unable to cast data to JsonArray")
                                     return
                                 }
-                                
-                                guard let array = numbers.array as? [Double] else {
-                                    print("Publisher: Unable to cast data to Swift Array")
-                                    return
-                                }
-                                
-                                if (array.count < 2) { return }
+
+                                if (numbers.count < 2) { return }
                                 
                                 let random = (Double(arc4random()) / Double(UInt32.max))
                                 switch (random) {
                                 case 0..<0.2:
                                     response.reject()
                                 case 0..<0.7:
-                                    let value = array[0] + array[1]
+                                    let value = numbers[0] + numbers[1]
                                     response.send(value)
                                 default:
                                     print("Publisher: This intentionally randomly failed")
