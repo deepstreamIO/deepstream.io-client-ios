@@ -58,10 +58,7 @@ final public class Subscriber {
     }
     
     private func makeSnapshot(client: DeepstreamClient, recordName: String) {
-        guard let snapshotResult = client.record.snapshot(recordName) else {
-            print("Subscriber: Snapshot did not work")
-            return
-        }
+        let snapshotResult = client.record.snapshot(recordName)!
         
         if (snapshotResult.hasError()) {
             print("Subscriber: Snapshot did not work because: \(snapshotResult.getError().getMessage())")
