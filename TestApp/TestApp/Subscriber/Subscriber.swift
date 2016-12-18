@@ -58,7 +58,7 @@ final public class Subscriber {
     
     private func makeSnapshot(client: DeepstreamClient, recordName: String) {
         let exception = tryBlock {
-            guard let snapshotResult : JsonElement = client.record?.snapshot(recordName) else {
+            guard let snapshotResult = client.record?.snapshot(recordName) else {
                 print("Subscriber: Snapshot did not work")
                 return
             }
@@ -69,11 +69,13 @@ final public class Subscriber {
     
     private func makeRpc(client: DeepstreamClient) {
         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            let data : JsonArray = JsonArray()
-            data.add(with: NSNumber(value: floor(Double(arc4random()) * 10)))
-            data.add(with: NSNumber(value: floor(Double(arc4random()) * 10)))
+            
+            let data = [
+                NSNumber(value: floor(Double(arc4random()) * 10)),
+                NSNumber(value: floor(Double(arc4random()) * 10))
+            ]
         
-            guard let rpcResponse = client.rpc?.make("add-numbers", data: data) else {
+            guard let rpcResponse = client.rpc?.make("add-numbers", data: data.jsonElement) else {
                 print("RPC failed")
                 return
             }
@@ -144,15 +146,22 @@ final public class Subscriber {
         
         final class SubscriberEventListener : NSObject, EventListener {
             func onEvent(with eventName: String!, withId args: Any!) {
-                guard let parameters = args as? JsonArray else {
+                guard let parameters = (args as? JsonArray)?.array else {
                     print("Subscriber: Unable to cast args as JsonArray")
                     return
                 }
                 
-                let first = parameters.getWith(0).getAsString()
-                let second = parameters.getWith(1).getAsLong()
+                if (parameters.count < 2) {
+                    print("Subscriber: Less than 2 parameters")
+                    return
+                }
                 
-                print("Subscriber: Event '\(eventName!)' occurred with: \(first!) at \(second)")
+                guard let first = parameters[0] as? String,
+                    let second = parameters[0] as? Int64 else {
+                    return
+                }
+                
+                print("Subscriber: Event '\(eventName!)' occurred with: \(first) at \(second)")
             }
         }
         
