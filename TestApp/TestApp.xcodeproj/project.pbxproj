@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94EB0BE005B7BE50DF368227 /* libPods-TestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A55AD17B0506FDA310C567D8 /* libPods-TestApp.a */; };
+		0AB1F6A9BC6437319635BA6C /* libPods-TestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B696DA99CF4D490CAD9ED09A /* libPods-TestApp.a */; };
 		FA0228DB1E05BEDE0021FF62 /* AppConnectionStateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */; };
 		FA0228DD1E05BF4F0021FF62 /* RunTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */; };
 		FA0228EC1E05D9C80021FF62 /* PublishListenListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */; };
+		FA3CFC2B1E08B5D700E80397 /* DeepstreamClient+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CFC281E08B5D700E80397 /* DeepstreamClient+Extensions.swift */; };
+		FA3CFC2C1E08B5D700E80397 /* GSON+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CFC291E08B5D700E80397 /* GSON+Types.swift */; };
+		FA3CFC2D1E08B5D700E80397 /* JavaUtilProperties+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CFC2A1E08B5D700E80397 /* JavaUtilProperties+Extension.swift */; };
 		FAF515AE1E057CB900D2BB28 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515AD1E057CB900D2BB28 /* main.swift */; };
 		FAF515B81E05912C00D2BB28 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515B71E05912C00D2BB28 /* Publisher.swift */; };
 		FAF515BA1E05913B00D2BB28 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF515B91E05913B00D2BB28 /* Subscriber.swift */; };
@@ -29,15 +32,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		673686790F3AC25AF780A5DA /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
-		A55AD17B0506FDA310C567D8 /* libPods-TestApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B28136F1151F4B9FB54BE408 /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
+		7F061EBD6454E35921388A60 /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B696DA99CF4D490CAD9ED09A /* libPods-TestApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConnectionStateListener.swift; sourceTree = "<group>"; };
 		FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeHandler.swift; sourceTree = "<group>"; };
 		FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishListenListener.swift; sourceTree = "<group>"; };
+		FA3CFC281E08B5D700E80397 /* DeepstreamClient+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DeepstreamClient+Extensions.swift"; path = "../../Pods/DeepstreamIO/swift/DeepstreamClient+Extensions.swift"; sourceTree = "<group>"; };
+		FA3CFC291E08B5D700E80397 /* GSON+Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GSON+Types.swift"; path = "../../Pods/DeepstreamIO/swift/GSON+Types.swift"; sourceTree = "<group>"; };
+		FA3CFC2A1E08B5D700E80397 /* JavaUtilProperties+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "JavaUtilProperties+Extension.swift"; path = "../../Pods/DeepstreamIO/swift/JavaUtilProperties+Extension.swift"; sourceTree = "<group>"; };
+		FA57988956EB91F9FAA4EC91 /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
+		FAAFF42E1E08A350001FFFC8 /* TestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		FAF515AA1E057CB900D2BB28 /* TestApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF515AD1E057CB900D2BB28 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		FAF515B71E05912C00D2BB28 /* Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		FAF515B91E05913B00D2BB28 /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,37 +53,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94EB0BE005B7BE50DF368227 /* libPods-TestApp.a in Frameworks */,
+				0AB1F6A9BC6437319635BA6C /* libPods-TestApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		022CC960D5805062465A8969 /* Frameworks */ = {
+		30E2879EC30868E020DDA43D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A55AD17B0506FDA310C567D8 /* libPods-TestApp.a */,
+				B696DA99CF4D490CAD9ED09A /* libPods-TestApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7570D6A7C3C7E6FA9E006592 /* Pods */ = {
+		7404D1F31CD5F8F009235AFA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B28136F1151F4B9FB54BE408 /* Pods-TestApp.debug.xcconfig */,
-				673686790F3AC25AF780A5DA /* Pods-TestApp.release.xcconfig */,
+				7F061EBD6454E35921388A60 /* Pods-TestApp.debug.xcconfig */,
+				FA57988956EB91F9FAA4EC91 /* Pods-TestApp.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		FA0228E51E05D4DA0021FF62 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				FAF515B61E05868C00D2BB28 /* TestApp-Bridging-Header.h */,
-				FAF515AD1E057CB900D2BB28 /* main.swift */,
-			);
-			path = App;
 			sourceTree = "<group>";
 		};
 		FA0228E61E05D52A0021FF62 /* Implementations */ = {
@@ -106,13 +103,25 @@
 			path = Subscriber;
 			sourceTree = "<group>";
 		};
+		FAAFF42D1E08A346001FFFC8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CFC281E08B5D700E80397 /* DeepstreamClient+Extensions.swift */,
+				FA3CFC291E08B5D700E80397 /* GSON+Types.swift */,
+				FA3CFC2A1E08B5D700E80397 /* JavaUtilProperties+Extension.swift */,
+				FAAFF42E1E08A350001FFFC8 /* TestApp-Bridging-Header.h */,
+				FAF515AD1E057CB900D2BB28 /* main.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		FAF515A11E057CB900D2BB28 = {
 			isa = PBXGroup;
 			children = (
-				022CC960D5805062465A8969 /* Frameworks */,
-				7570D6A7C3C7E6FA9E006592 /* Pods */,
 				FAF515AB1E057CB900D2BB28 /* Products */,
 				FAF515AC1E057CB900D2BB28 /* TestApp */,
+				7404D1F31CD5F8F009235AFA /* Pods */,
+				30E2879EC30868E020DDA43D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,7 +136,7 @@
 		FAF515AC1E057CB900D2BB28 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
-				FA0228E51E05D4DA0021FF62 /* App */,
+				FAAFF42D1E08A346001FFFC8 /* App */,
 				FA0228E61E05D52A0021FF62 /* Implementations */,
 				FA66FCB51E05B33800D50190 /* Publisher */,
 				FA66FCB61E05B33D00D50190 /* Subscriber */,
@@ -142,11 +151,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAF515B11E057CB900D2BB28 /* Build configuration list for PBXNativeTarget "TestApp" */;
 			buildPhases = (
-				BBF736AEC385077901A5DAD4 /* [CP] Check Pods Manifest.lock */,
+				C4588173ADF519D6D4284CBB /* [CP] Check Pods Manifest.lock */,
 				FAF515A61E057CB900D2BB28 /* Sources */,
 				FAF515A71E057CB900D2BB28 /* Frameworks */,
 				FAF515A81E057CB900D2BB28 /* CopyFiles */,
-				1417A006E34C0985B5B92FA2 /* [CP] Copy Pods Resources */,
+				90815B3A1127663ACE7A9568 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,7 +199,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1417A006E34C0985B5B92FA2 /* [CP] Copy Pods Resources */ = {
+		90815B3A1127663ACE7A9568 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -205,7 +214,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestApp/Pods-TestApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BBF736AEC385077901A5DAD4 /* [CP] Check Pods Manifest.lock */ = {
+		C4588173ADF519D6D4284CBB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -227,11 +236,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3CFC2D1E08B5D700E80397 /* JavaUtilProperties+Extension.swift in Sources */,
 				FAF515BA1E05913B00D2BB28 /* Subscriber.swift in Sources */,
 				FAF515B81E05912C00D2BB28 /* Publisher.swift in Sources */,
+				FA3CFC2C1E08B5D700E80397 /* GSON+Types.swift in Sources */,
 				FA0228EC1E05D9C80021FF62 /* PublishListenListener.swift in Sources */,
 				FAF515AE1E057CB900D2BB28 /* main.swift in Sources */,
 				FA0228DD1E05BF4F0021FF62 /* RunTimeHandler.swift in Sources */,
+				FA3CFC2B1E08B5D700E80397 /* DeepstreamClient+Extensions.swift in Sources */,
 				FA0228DB1E05BEDE0021FF62 /* AppConnectionStateListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,9 +344,10 @@
 		};
 		FAF515B21E057CB900D2BB28 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B28136F1151F4B9FB54BE408 /* Pods-TestApp.debug.xcconfig */;
+			baseConfigurationReference = 7F061EBD6454E35921388A60 /* Pods-TestApp.debug.xcconfig */;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/TestApp/App/TestApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -342,9 +355,10 @@
 		};
 		FAF515B31E057CB900D2BB28 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 673686790F3AC25AF780A5DA /* Pods-TestApp.release.xcconfig */;
+			baseConfigurationReference = FA57988956EB91F9FAA4EC91 /* Pods-TestApp.release.xcconfig */;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/TestApp/App/TestApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.authors                   = { "Akram Hussein" => 'akramhussein@gmail.com', "Yasser Fadl" => 'yasser.fadl@deepstreamhub.com' }
   s.social_media_url          = "http://twitter.com/deepstreamio"
 
-  s.source                    = { :http => "https://github.com/akramhussein/deepstream.io-client-ios/releases/download/1.0.0/DeepstreamIO.zip" }
+  s.source                    = { :http => "http://deepstream.io-client-ios.s3.amazonaws.com/DeepstreamIO-#{s.version}.zip" }
   s.requires_arc              = true
 
   s.public_header_files       = 'src/DeepstreamIO.h'
@@ -19,7 +19,6 @@ Pod::Spec.new do |s|
   s.watchos.vendored_libraries  = 'lib/iosRelease/libdeepstream.io-client-java-j2objc.a'
   s.osx.vendored_libraries      = 'lib/x86_64Release/libdeepstream.io-client-java-j2objc.a'
 
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
   s.xcconfig = {
     'HEADER_SEARCH_PATHS'  => '${PODS_ROOT}/DeepstreamIO/j2objc/include ${PODS_ROOT}/DeepstreamIO/src/main/objc'
   }
@@ -37,5 +36,7 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '2.0'
   s.osx.deployment_target     = '10.9'
   s.osx.frameworks            = 'ExceptionHandling'
+  s.pod_target_xcconfig       = { 'SWIFT_VERSION' => '3.0' }
+  s.resources  = "swift/*.swift"
 end
 
