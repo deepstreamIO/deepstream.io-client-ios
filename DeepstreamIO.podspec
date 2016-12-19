@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.requires_arc              = true
 
   s.public_header_files       = 'src/DeepstreamIO.h'
-  s.source_files              = '{swift,src}/*.{h,swift}'
+  s.source_files              = 'src/DeepstreamIO.h'
   s.preserve_paths            = '{j2objc,src}/**/*.{h,m,a}'
   s.libraries                 = 'jre_emul', 'z'
 
