@@ -15,6 +15,10 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		FA5259E41E08CC5E006308E7 /* DeepstreamClient+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5259E01E08CC5E006308E7 /* DeepstreamClient+Extensions.swift */; };
+		FA5259E51E08CC5E006308E7 /* GSON+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5259E11E08CC5E006308E7 /* GSON+Types.swift */; };
+		FA5259E61E08CC5E006308E7 /* JavaUtilProperties+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5259E21E08CC5E006308E7 /* JavaUtilProperties+Extension.swift */; };
+		FA5259E81E08CC8F006308E7 /* RunTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5259E71E08CC8F006308E7 /* RunTimeHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		B543ED99E76A80AF8409AE09 /* Pods-DeepstreamIO_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepstreamIO_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepstreamIO_Tests/Pods-DeepstreamIO_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE88C1D299B3F0FF278B14EC /* Pods_DeepstreamIO_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepstreamIO_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2899B45E9A687BAFB0C4C1D /* DeepstreamIO.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DeepstreamIO.podspec; path = ../DeepstreamIO.podspec; sourceTree = "<group>"; };
+		FA5259E01E08CC5E006308E7 /* DeepstreamClient+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DeepstreamClient+Extensions.swift"; path = "swift/DeepstreamClient+Extensions.swift"; sourceTree = "<group>"; };
+		FA5259E11E08CC5E006308E7 /* GSON+Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GSON+Types.swift"; path = "swift/GSON+Types.swift"; sourceTree = "<group>"; };
+		FA5259E21E08CC5E006308E7 /* JavaUtilProperties+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "JavaUtilProperties+Extension.swift"; path = "swift/JavaUtilProperties+Extension.swift"; sourceTree = "<group>"; };
+		FA5259E71E08CC8F006308E7 /* RunTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeHandler.swift; sourceTree = "<group>"; };
 		FADF307D1D9C5B0900C4D819 /* Deepstream-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Deepstream-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,7 +102,9 @@
 		607FACD21AFB9204008FA782 /* Example for DeepstreamIO */ = {
 			isa = PBXGroup;
 			children = (
+				FA5259E31E08CC5E006308E7 /* Resources */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				FA5259E71E08CC8F006308E7 /* RunTimeHandler.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -161,6 +171,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FA5259E31E08CC5E006308E7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA5259E01E08CC5E006308E7 /* DeepstreamClient+Extensions.swift */,
+				FA5259E11E08CC5E006308E7 /* GSON+Types.swift */,
+				FA5259E21E08CC5E006308E7 /* JavaUtilProperties+Extension.swift */,
+			);
+			name = Resources;
+			path = ../Pods/DeepstreamIO;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -217,6 +238,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 8HB697SYPQ;
 						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -364,7 +386,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				FA5259E61E08CC5E006308E7 /* JavaUtilProperties+Extension.swift in Sources */,
+				FA5259E41E08CC5E006308E7 /* DeepstreamClient+Extensions.swift in Sources */,
+				FA5259E51E08CC5E006308E7 /* GSON+Types.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				FA5259E81E08CC8F006308E7 /* RunTimeHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,13 +524,15 @@
 			baseConfigurationReference = 8648685320A29586C459E658 /* Pods-DeepstreamIO_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8HB697SYPQ;
 				INFOPLIST_FILE = DeepstreamIO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/DeepstreamIO/Deepstream-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -513,13 +541,15 @@
 			baseConfigurationReference = 96449F7A0FF2B26E90234E0A /* Pods-DeepstreamIO_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8HB697SYPQ;
 				INFOPLIST_FILE = DeepstreamIO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/DeepstreamIO/Deepstream-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
