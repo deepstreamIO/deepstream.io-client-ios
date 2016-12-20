@@ -44,6 +44,26 @@ e.g. ${PROJECT_DIR}/DeepstreamIO/Deepstream-Bridging-Header.h
 
 An example of this is in the [Example](Example) project in the repository.
 
+# Deepstream Extensions
+
+To help bridge between the Java transpiled Objective-C, several Swift extension files are provided in the Pod that can be used to simplify usage of the DeepstreamIO pod.
+
+To add these:
+
+1. In the newly created .xcworkspace in your directory, expand the `Pods > Pods > DeepstreamIO` tree.
+
+2. Select the `resources` folder and drag it to your project.
+
+<img src="assets/extensions-1.png" width="200">
+
+3. When presented with a dialogue, make sure `Copy items if needed` is *NOT* ticked and click `Finish`.
+
+<img src="assets/extensions-2.png" width="200">
+
+4. You will now have access to the Swift extensions.
+
+An example of this is in the [Example](Example) project in the repository.
+
 ## Author
 
 Akram Hussein, akramhussein@gmail.com
