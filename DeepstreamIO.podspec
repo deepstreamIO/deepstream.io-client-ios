@@ -25,15 +25,11 @@ Pod::Spec.new do |s|
   s.ios.xcconfig = {
     'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/DeepstreamIO/j2objc/lib'
   }
-  s.watchos.xcconfig = {
-    'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/DeepstreamIO/j2objc/lib'
-  }
   s.osx.xcconfig = {
     'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/DeepstreamIO/j2objc/lib/macosx'
   }
 
   s.ios.deployment_target     = '8.3'
-  s.watchos.deployment_target = '2.0'
   s.osx.deployment_target     = '10.9'
   s.osx.frameworks            = 'ExceptionHandling'
   s.pod_target_xcconfig       = { 'SWIFT_VERSION' => '3.0' }
