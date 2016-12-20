@@ -56,7 +56,7 @@ To add these:
 
 <img src="assets/extensions-1.png" width="200">
 
-3. When presented with a dialogue, make sure `Copy files if needed` is *NOT* ticked and click `Finish`.
+3. When presented with a dialogue, make sure `Copy items if needed` is *NOT* ticked and click `Finish`.
 
 <img src="assets/extensions-2.png" width="200">
 
