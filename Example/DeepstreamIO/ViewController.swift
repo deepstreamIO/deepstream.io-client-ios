@@ -25,8 +25,6 @@ final class ViewController: UIViewController {
     }
 
     func setupDeepstream() {
-        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-        
         DispatchQueue.global().async {
 
             // Setup Deepstream.io client 
