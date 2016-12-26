@@ -101,7 +101,7 @@ final class ViewController: UIViewController {
         }
     }
 
-    @IBAction func editingChanged(sender: UITextField) {
+    @IBAction func editingChanged(_ sender: UITextField) {
         if let record = self.record {
             record.set("firstname", value: sender.text)
         }
