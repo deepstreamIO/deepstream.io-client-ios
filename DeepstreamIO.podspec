@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                      = "DeepstreamIO"
-  s.version                   = "1.0.0"
+  s.version                   = "2.0.0"
   s.summary                   = "The open realtime server - a fast, secure and scalable websocket & tcp server for mobile, web & iot"
   s.homepage                  = "https://deepstream.io"
   s.license                   = { :type => 'Apache 2.0', :file => 'LICENSE' }
