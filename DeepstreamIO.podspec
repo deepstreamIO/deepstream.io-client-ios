@@ -33,6 +33,6 @@ Pod::Spec.new do |s|
   s.osx.deployment_target     = '10.9'
   s.osx.frameworks            = 'ExceptionHandling'
   s.pod_target_xcconfig       = { 'SWIFT_VERSION' => '3.0' }
-  s.resources  = "swift/*.swift"
+  s.resources                 = "swift/*.swift"
 end
 
