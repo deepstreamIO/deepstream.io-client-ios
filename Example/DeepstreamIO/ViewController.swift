@@ -30,7 +30,7 @@ final class ViewController: UIViewController {
             // Setup Deepstream.io client 
             // NOTE: REPLACE HOST
 
-            self.client = DeepstreamClient("0.0.0.0:6020")
+            self.client = DeepstreamClient("127.0.0.1:6020")
             self.client?.setRuntimeErrorHandler(RuntimeErrorHandler())
 
             sleep(5)
@@ -61,10 +61,10 @@ final class ViewController: UIViewController {
             self.record = record
 
             // Init UI against latest record state
-            let currentRecordText = client.record.getRecord("some-name").get("firstname")
-            DispatchQueue.main.async {
-                if(( currentRecordText?.getAsJsonPrimitive().isString() ) != nil) {
-                    self.textField.text = currentRecordText?.getAsString()
+            
+            if let currentRecord = self.record?.get("firstname"), currentRecord != JsonNull() {
+                DispatchQueue.main.async {
+                    self.textField.text = currentRecord.getAsString()
                 }
             }
             
