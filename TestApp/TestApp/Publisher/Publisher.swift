@@ -21,7 +21,7 @@ final public class Publisher {
         self.subscribeConnectionChanges(client: client)
         self.subscribeRuntimeErrors(client: client)
         
-        guard let loginResult = client.login(with: authData.jsonElement) else {
+        guard let loginResult = client.login(authData.jsonElement) else {
             print("Publisher: Failed to login")
             return
         }
@@ -67,8 +67,8 @@ final public class Publisher {
     }
     
     private func listenEvent(client: DeepstreamClient) {        
-        client.event.listen(with: "event/.*",
-                            with: PublisherListenListener(handler: { (subscription, client) in
+        client.event.listen("event/.*",
+                            listenListener: PublisherListenListener(handler: { (subscription, client) in
                                 print("Publisher: Event \(subscription) just subscribed.")
                                 self.publishEvent(subscription: subscription, client: client)
                              }, client: client))
@@ -81,7 +81,7 @@ final public class Publisher {
                 let timeInterval : TimeInterval = Date().timeIntervalSince1970
                 let data : [Any] = ["An event just happened", timeInterval]
                 print("Publisher: Emitting event \(data)")
-                client.event.emit(with: subscription, withId: data.jsonElement)
+                client.event.emit(subscription, data: data.jsonElement)
             }
             RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
             timer.fire()
@@ -132,7 +132,7 @@ final public class Publisher {
     }
     
     private func subscribeConnectionChanges(client: DeepstreamClient) {
-        client.addConnectionChangeListener(with: AppConnectionStateListener())
+        client.addConnectionChange(AppConnectionStateListener())
     }
 
     private func updateRecordWithAck(recordName: String, client: DeepstreamClient) {
@@ -141,7 +141,7 @@ final public class Publisher {
             return
         }
     
-        guard let result = record.setWithAckWith("number", withId: 2) else {
+        guard let result = record.setWithAck("number", value: 2) else {
             print("Publisher: No result")
             return
         }

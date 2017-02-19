@@ -27,7 +27,7 @@ final public class Subscriber {
         self.subscribeConnectionChanges(client: client)
         self.subscribeRuntimeErrors(client: client)
         
-        guard let loginResult = client.login(with: authData.jsonElement) else {
+        guard let loginResult = client.login(authData.jsonElement) else {
             print("Subscriber: Failed to login")
             return
         }
@@ -92,7 +92,7 @@ final public class Subscriber {
     }
     
     private func subscribeConnectionChanges(client: DeepstreamClient) {
-        client.addConnectionChangeListener(with: AppConnectionStateListener())
+        client.addConnectionChange(AppConnectionStateListener())
     }
     
     private func subscribeAnonymousRecord(client: DeepstreamClient) {
@@ -125,7 +125,7 @@ final public class Subscriber {
                 print("Subscriber: List \(listName) entry \(entry_) move to \(position)")
             }
         }
-        list.subscribe(with: SubscribeListEntryChangedListener())
+        list.subscribe(toListEntryChange: SubscribeListEntryChangedListener())
     }
     
     private func subscribeRecord(client: DeepstreamClient, recordName: String) {
@@ -147,7 +147,7 @@ final public class Subscriber {
     private func subscribeEvent(client: DeepstreamClient) {
         
         final class SubscriberEventListener : NSObject, EventListener {
-            func onEvent(with eventName: String!, withId args: Any!) {
+            func onEvent(_ eventName: String!, args: Any!) {
                 guard let parameters = (args as? JsonArray)?.array else {
                     print("Subscriber: Unable to cast args as JsonArray")
                     return
@@ -167,7 +167,7 @@ final public class Subscriber {
             }
         }
         
-        client.event.subscribe(with: "event/a", with: SubscriberEventListener())
+        client.event.subscribe("event/a", eventListener: SubscriberEventListener())
     }
     
     private func subscribePresence(client: DeepstreamClient) {
@@ -182,7 +182,7 @@ final public class Subscriber {
             }
         }
         
-        client.presence.subscribe(with: SubscriberPresenceEventListener())
+        client.presence.subscribe(SubscriberPresenceEventListener())
     }
     
     private func queryClients(client: DeepstreamClient) {
