@@ -28,7 +28,7 @@ final class ViewController: UIViewController {
             // Setup Deepstream.io client
 
             // NOTE: REPLACE HOST
-            let DeepstreamHubURL = "127.0.0.1:6020"
+            let DeepstreamHubURL = "127.0.0.1"
 
             IOSDeepstreamFactory.getInstance().getClient(DeepstreamHubURL, callback: { (client) in
                 guard let c = client else {
@@ -38,8 +38,6 @@ final class ViewController: UIViewController {
                 
                 self.client = c
                 self.client?.setRuntimeErrorHandler(RuntimeErrorHandler())
-
-                sleep(5)
 
                 // Login
                 guard let loginResult = self.client?.login() else{
