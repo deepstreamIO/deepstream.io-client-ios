@@ -16,6 +16,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		FACACE921E8012EE00E52FDF /* Deepstream+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACACE911E8012EE00E52FDF /* Deepstream+Extensions.swift */; };
+		FACACE941E80143700E52FDF /* RunTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACACE931E80143700E52FDF /* RunTimeHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		CE88C1D299B3F0FF278B14EC /* Pods_DeepstreamIO_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepstreamIO_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2899B45E9A687BAFB0C4C1D /* DeepstreamIO.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DeepstreamIO.podspec; path = ../../DeepstreamIO.podspec; sourceTree = "<group>"; };
 		FACACE911E8012EE00E52FDF /* Deepstream+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Deepstream+Extensions.swift"; path = "Pods/DeepstreamIO/swift/Deepstream+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		FACACE931E80143700E52FDF /* RunTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RunTimeHandler.swift; path = "Supporting Files/RunTimeHandler.swift"; sourceTree = "<group>"; };
 		FADF307D1D9C5B0900C4D819 /* Deepstream-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Deepstream-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				FA5259E31E08CC5E006308E7 /* Resources */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				FACACE931E80143700E52FDF /* RunTimeHandler.swift */,
 				FADF307D1D9C5B0900C4D819 /* Deepstream-Bridging-Header.h */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -374,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				FACACE941E80143700E52FDF /* RunTimeHandler.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				FACACE921E8012EE00E52FDF /* Deepstream+Extensions.swift in Sources */,
 			);
@@ -512,7 +516,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "Example for DeepstreamIO/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DeepstreamIO/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -529,7 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "Example for DeepstreamIO/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DeepstreamIO/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
