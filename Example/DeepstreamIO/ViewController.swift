@@ -30,73 +30,76 @@ final class ViewController: UIViewController {
             // NOTE: REPLACE HOST
             let DeepstreamHubURL = "127.0.0.1:6020"
 
-            guard let client = DeepstreamFactory.getInstance().getClient(url: DeepstreamHubURL) else {
-                print("Unable to initialize client")
-                return
-            }
-            self.client = client
-            self.client?.setRuntimeErrorHandler(RuntimeErrorHandler())
-
-            sleep(5)
-
-            // Login
-            guard let loginResult = client.login() else{
-                print("Unable to get login result")
-                return
-            }
-
-            if (loginResult.getErrorEvent() == nil) {
-                print("Successfully logged in")
-            } else {
-                print("Error: Failed to log in...exiting")
-                return
-            }
-
-            // Get record handler
-            guard let record = client.record.getRecord("some-name") else {
-                return
-            }
-
-            self.record = record
-
-            // Init UI against latest record state
-
-            if let currentRecord = self.record?.get("firstname"), currentRecord != JsonNull() {
-                DispatchQueue.main.async {
-                    self.textField.text = currentRecord.getAsString()
+            IOSDeepstreamFactory.getInstance().getClient(DeepstreamHubURL, callback: { (client) in
+                guard let c = client else {
+                    print("Unable to initialize client")
+                    return
                 }
-            }
+                
+                self.client = c
+                self.client?.setRuntimeErrorHandler(RuntimeErrorHandler())
 
-            // Subscribe to updates
+                sleep(5)
 
-            // Convenience typealias
-            typealias RecordSubscriptionCallbackHandler = ((String, String, JsonElement) -> Void)
-
-            // Declare inner class - an implementation of interface
-            final class RecordSubscriptionCallback : NSObject, RecordPathChangedCallback {
-
-                private var handler : RecordSubscriptionCallbackHandler!
-
-                func onRecordPathChanged(_ recordName: String!, path: String!, data: JsonElement!) {
-                    print("\(recordName):\(path) = \(data)")
-                    self.handler(recordName, path, data)
+                // Login
+                guard let loginResult = self.client?.login() else{
+                    print("Unable to get login result")
+                    return
                 }
 
-                init(handler: @escaping RecordSubscriptionCallbackHandler) {
-                    self.handler = handler
+                if (loginResult.getErrorEvent() == nil) {
+                    print("Successfully logged in")
+                } else {
+                    print("Error: Failed to log in...exiting")
+                    return
                 }
-            }
 
-            let callback = RecordSubscriptionCallback(handler: { (recordName, path, data) -> Void in
-                DispatchQueue.main.async {
-                    if( data.getAsJsonPrimitive().isString() ) {
-                        let recordText = data.getAsString()
-                        self.textField.text = recordText
+                // Get record handler
+                guard let record = self.client?.record.getRecord("some-name") else {
+                    return
+                }
+
+                self.record = record
+
+                // Init UI against latest record state
+
+                if let currentRecord = self.record?.get("firstname"), currentRecord != JsonNull() {
+                    DispatchQueue.main.async {
+                        self.textField.text = currentRecord.getAsString()
                     }
                 }
-            })
 
-            record.subscribe("firstname", recordPathChangedCallback: callback)
+                // Subscribe to updates
+
+                // Convenience typealias
+                typealias RecordSubscriptionCallbackHandler = ((String, String, JsonElement) -> Void)
+
+                // Declare inner class - an implementation of interface
+                final class RecordSubscriptionCallback : NSObject, RecordPathChangedCallback {
+
+                    private var handler : RecordSubscriptionCallbackHandler!
+
+                    func onRecordPathChanged(_ recordName: String!, path: String!, data: JsonElement!) {
+                        print("\(recordName):\(path) = \(data)")
+                        self.handler(recordName, path, data)
+                    }
+
+                    init(handler: @escaping RecordSubscriptionCallbackHandler) {
+                        self.handler = handler
+                    }
+                }
+
+                let callback = RecordSubscriptionCallback(handler: { (recordName, path, data) -> Void in
+                    DispatchQueue.main.async {
+                        if( data.getAsJsonPrimitive().isString() ) {
+                            let recordText = data.getAsString()
+                            self.textField.text = recordText
+                        }
+                    }
+                })
+
+                record.subscribe("firstname", recordPathChangedCallback: callback)
+        })
     }
 
     @IBAction func editingChanged(_ sender: UITextField) {
