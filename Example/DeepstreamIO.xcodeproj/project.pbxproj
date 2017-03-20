@@ -15,10 +15,13 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		FA5259E41E08CC5E006308E7 /* DeepstreamClient+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5259E01E08CC5E006308E7 /* DeepstreamClient+Extensions.swift */; };
-		FA5259E51E08CC5E006308E7 /* GSON+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5259E11E08CC5E006308E7 /* GSON+Types.swift */; };
-		FA5259E61E08CC5E006308E7 /* JavaUtilProperties+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5259E21E08CC5E006308E7 /* JavaUtilProperties+Extension.swift */; };
 		FA5259E81E08CC8F006308E7 /* RunTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5259E71E08CC8F006308E7 /* RunTimeHandler.swift */; };
+		FA909F761E7FFAC100EBD776 /* DeepstreamClient+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA909F701E7FFAC000EBD776 /* DeepstreamClient+Extensions.swift */; };
+		FA909F771E7FFAC100EBD776 /* GSON+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA909F711E7FFAC000EBD776 /* GSON+Types.swift */; };
+		FA909F781E7FFAC100EBD776 /* IOSDeepstreamFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA909F721E7FFAC000EBD776 /* IOSDeepstreamFactory.swift */; };
+		FA909F791E7FFAC100EBD776 /* IOSEndpointWebsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA909F731E7FFAC000EBD776 /* IOSEndpointWebsocket.swift */; };
+		FA909F7A1E7FFAC100EBD776 /* IOSEndpointWebsocketFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA909F741E7FFAC100EBD776 /* IOSEndpointWebsocketFactory.swift */; };
+		FA909F7B1E7FFAC100EBD776 /* JavaUtilProperties+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA909F751E7FFAC100EBD776 /* JavaUtilProperties+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16DBC58ED8ACF3D1B0C35C9E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		16DBC58ED8ACF3D1B0C35C9E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		1FAE98E10C87FD5D3E57C2A6 /* Pods-DeepstreamIO_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepstreamIO_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepstreamIO_Tests/Pods-DeepstreamIO_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* DeepstreamIO_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepstreamIO_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,14 +50,17 @@
 		8648685320A29586C459E658 /* Pods-DeepstreamIO_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepstreamIO_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepstreamIO_Example/Pods-DeepstreamIO_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		91BB02BE16F636BD458D0680 /* Pods_DeepstreamIO_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepstreamIO_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96449F7A0FF2B26E90234E0A /* Pods-DeepstreamIO_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepstreamIO_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepstreamIO_Example/Pods-DeepstreamIO_Example.release.xcconfig"; sourceTree = "<group>"; };
-		A8A8808DAA32F56ED24ADCA5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		A8A8808DAA32F56ED24ADCA5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
 		B543ED99E76A80AF8409AE09 /* Pods-DeepstreamIO_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepstreamIO_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepstreamIO_Tests/Pods-DeepstreamIO_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE88C1D299B3F0FF278B14EC /* Pods_DeepstreamIO_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepstreamIO_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F2899B45E9A687BAFB0C4C1D /* DeepstreamIO.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DeepstreamIO.podspec; path = ../DeepstreamIO.podspec; sourceTree = "<group>"; };
-		FA5259E01E08CC5E006308E7 /* DeepstreamClient+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DeepstreamClient+Extensions.swift"; path = "swift/DeepstreamClient+Extensions.swift"; sourceTree = "<group>"; };
-		FA5259E11E08CC5E006308E7 /* GSON+Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GSON+Types.swift"; path = "swift/GSON+Types.swift"; sourceTree = "<group>"; };
-		FA5259E21E08CC5E006308E7 /* JavaUtilProperties+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "JavaUtilProperties+Extension.swift"; path = "swift/JavaUtilProperties+Extension.swift"; sourceTree = "<group>"; };
+		F2899B45E9A687BAFB0C4C1D /* DeepstreamIO.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DeepstreamIO.podspec; path = ../../DeepstreamIO.podspec; sourceTree = "<group>"; };
 		FA5259E71E08CC8F006308E7 /* RunTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeHandler.swift; sourceTree = "<group>"; };
+		FA909F701E7FFAC000EBD776 /* DeepstreamClient+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeepstreamClient+Extensions.swift"; sourceTree = "<group>"; };
+		FA909F711E7FFAC000EBD776 /* GSON+Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GSON+Types.swift"; sourceTree = "<group>"; };
+		FA909F721E7FFAC000EBD776 /* IOSDeepstreamFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSDeepstreamFactory.swift; sourceTree = "<group>"; };
+		FA909F731E7FFAC000EBD776 /* IOSEndpointWebsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSEndpointWebsocket.swift; sourceTree = "<group>"; };
+		FA909F741E7FFAC100EBD776 /* IOSEndpointWebsocketFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSEndpointWebsocketFactory.swift; sourceTree = "<group>"; };
+		FA909F751E7FFAC100EBD776 /* JavaUtilProperties+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JavaUtilProperties+Extension.swift"; sourceTree = "<group>"; };
 		FADF307D1D9C5B0900C4D819 /* Deepstream-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Deepstream-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,12 +87,12 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for DeepstreamIO */,
-				607FACE81AFB9204008FA782 /* Tests */,
-				607FACD11AFB9204008FA782 /* Products */,
-				AE88063D4976C3073ABA5D5F /* Pods */,
 				707E5A2B373C2F87941991A2 /* Frameworks */,
+				AE88063D4976C3073ABA5D5F /* Pods */,
+				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				607FACD11AFB9204008FA782 /* Products */,
+				607FACE81AFB9204008FA782 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,17 +109,22 @@
 			isa = PBXGroup;
 			children = (
 				FA5259E31E08CC5E006308E7 /* Resources */,
+				607FACD31AFB9204008FA782 /* Supporting Files */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				FADF307D1D9C5B0900C4D819 /* Deepstream-Bridging-Header.h */,
+				FA909F701E7FFAC000EBD776 /* DeepstreamClient+Extensions.swift */,
+				FA909F711E7FFAC000EBD776 /* GSON+Types.swift */,
+				FA909F721E7FFAC000EBD776 /* IOSDeepstreamFactory.swift */,
+				FA909F731E7FFAC000EBD776 /* IOSEndpointWebsocket.swift */,
+				FA909F741E7FFAC100EBD776 /* IOSEndpointWebsocketFactory.swift */,
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				FA909F751E7FFAC100EBD776 /* JavaUtilProperties+Extension.swift */,
+				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				FA5259E71E08CC8F006308E7 /* RunTimeHandler.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
-				607FACD31AFB9204008FA782 /* Supporting Files */,
-				FADF307D1D9C5B0900C4D819 /* Deepstream-Bridging-Header.h */,
 			);
-			name = "Example for DeepstreamIO";
-			path = DeepstreamIO;
+			path = "Example for DeepstreamIO";
 			sourceTree = "<group>";
 		};
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
@@ -121,14 +132,14 @@
 			children = (
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				607FACEB1AFB9204008FA782 /* Tests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -138,17 +149,17 @@
 			children = (
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
 				F2899B45E9A687BAFB0C4C1D /* DeepstreamIO.podspec */,
-				16DBC58ED8ACF3D1B0C35C9E /* README.md */,
 				A8A8808DAA32F56ED24ADCA5 /* LICENSE */,
+				16DBC58ED8ACF3D1B0C35C9E /* README.md */,
 			);
-			name = "Podspec Metadata";
+			path = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 		707E5A2B373C2F87941991A2 /* Frameworks */ = {
@@ -174,12 +185,8 @@
 		FA5259E31E08CC5E006308E7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FA5259E01E08CC5E006308E7 /* DeepstreamClient+Extensions.swift */,
-				FA5259E11E08CC5E006308E7 /* GSON+Types.swift */,
-				FA5259E21E08CC5E006308E7 /* JavaUtilProperties+Extension.swift */,
 			);
-			name = Resources;
-			path = ../Pods/DeepstreamIO;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +245,6 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 8HB697SYPQ;
 						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -385,11 +391,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA909F7B1E7FFAC100EBD776 /* JavaUtilProperties+Extension.swift in Sources */,
+				FA909F761E7FFAC100EBD776 /* DeepstreamClient+Extensions.swift in Sources */,
+				FA909F771E7FFAC100EBD776 /* GSON+Types.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				FA5259E61E08CC5E006308E7 /* JavaUtilProperties+Extension.swift in Sources */,
-				FA5259E41E08CC5E006308E7 /* DeepstreamClient+Extensions.swift in Sources */,
-				FA5259E51E08CC5E006308E7 /* GSON+Types.swift in Sources */,
+				FA909F791E7FFAC100EBD776 /* IOSEndpointWebsocket.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				FA909F7A1E7FFAC100EBD776 /* IOSEndpointWebsocketFactory.swift in Sources */,
+				FA909F781E7FFAC100EBD776 /* IOSDeepstreamFactory.swift in Sources */,
 				FA5259E81E08CC8F006308E7 /* RunTimeHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +428,7 @@
 				607FACDA1AFB9204008FA782 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
@@ -427,6 +437,7 @@
 				607FACDF1AFB9204008FA782 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -524,8 +535,8 @@
 			baseConfigurationReference = 8648685320A29586C459E658 /* Pods-DeepstreamIO_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8HB697SYPQ;
-				INFOPLIST_FILE = DeepstreamIO/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Example for DeepstreamIO/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -541,8 +552,8 @@
 			baseConfigurationReference = 96449F7A0FF2B26E90234E0A /* Pods-DeepstreamIO_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8HB697SYPQ;
-				INFOPLIST_FILE = DeepstreamIO/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Example for DeepstreamIO/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -557,6 +568,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B543ED99E76A80AF8409AE09 /* Pods-DeepstreamIO_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -565,7 +577,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -577,11 +589,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FAE98E10C87FD5D3E57C2A6 /* Pods-DeepstreamIO_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
