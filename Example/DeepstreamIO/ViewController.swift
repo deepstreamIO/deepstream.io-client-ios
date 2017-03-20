@@ -25,14 +25,12 @@ final class ViewController: UIViewController {
     }
 
     func setupDeepstream() {
-        DispatchQueue.global().async {
-
             // Setup Deepstream.io client
 
             // NOTE: REPLACE HOST
             let DeepstreamHubURL = "127.0.0.1:6020"
 
-            guard let client = IOSDeepstreamFactory.getInstance().getClient(url: DeepstreamHubURL) else {
+            guard let client = DeepstreamFactory.getInstance().getClient(url: DeepstreamHubURL) else {
                 print("Unable to initialize client")
                 return
             }
@@ -99,7 +97,6 @@ final class ViewController: UIViewController {
             })
 
             record.subscribe("firstname", recordPathChangedCallback: callback)
-        }
     }
 
     @IBAction func editingChanged(_ sender: UITextField) {
