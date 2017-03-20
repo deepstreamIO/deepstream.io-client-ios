@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                      = "DeepstreamIO"
-  s.version                   = "2.0.4"
+  s.version                   = "2.0.6"
   s.summary                   = "The open realtime server - a fast, secure and scalable websocket & tcp server for mobile, web & iot"
   s.homepage                  = "https://deepstream.io"
   s.license                   = { :type => 'Apache 2.0', :file => 'LICENSE' }
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   }
 
   s.ios.deployment_target     = '8.3'
-  s.osx.deployment_target     = '10.9'
+  s.osx.deployment_target     = '10.10'
   s.osx.frameworks            = 'ExceptionHandling'
   s.pod_target_xcconfig       = { 'SWIFT_VERSION' => '3.0' }
   s.resources                 = "swift/*.swift"
