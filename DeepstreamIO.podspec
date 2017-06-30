@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage                  = "https://deepstream.io"
   s.license                   = { :type => 'Apache 2.0', :file => 'LICENSE' }
   s.authors                   = { "Akram Hussein" => 'akramhussein@gmail.com', "Yasser Fadl" => 'yasser.fadl@deepstreamhub.com' }
-  s.social_media_url          = "http://twitter.com/deepstreamio"
+  s.social_media_url          = "https://twitter.com/deepstreamHub"
 
   s.source                    = { :http => "http://deepstream.io-client-ios.s3.amazonaws.com/DeepstreamIO-#{s.version}.zip" }
   s.requires_arc              = true
