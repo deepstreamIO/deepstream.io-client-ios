@@ -8,8 +8,8 @@
 
 import Foundation
 
-final class AppConnectionStateListener : NSObject, ConnectionStateListener {
-    func connectionStateChanged(_ connectionState: ConnectionState!) {
+final class AppConnectionStateListener : NSObject, DSConnectionStateListener {
+    func connectionStateChanged(_ connectionState: DSConnectionState!) {
         print("Connection state changed \(connectionState!)")
     }
 }

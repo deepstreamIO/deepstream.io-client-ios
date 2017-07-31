@@ -13,7 +13,7 @@ final public class Publisher {
     init() {
         let authData = ["username" : "Publisher"]
     
-        guard let client = DeepstreamClient("0.0.0.0:6020") else {
+        guard let client = DSDeepstreamClient("0.0.0.0:6020") else {
             print("Publisher: Unable to initialize client")
             return
         }
@@ -37,7 +37,7 @@ final public class Publisher {
         }
     }
     
-    private func listenRecord(client: DeepstreamClient) {
+    private func listenRecord(client: DSDeepstreamClient) {
         let record = client.record
         
         let handler = PublisherListenListener(handler: { (subscription, client) in
@@ -47,7 +47,7 @@ final public class Publisher {
         record.listen("record/.*", listenCallback: handler)
     }
     
-    private func updateRecord(subscription: String, client: DeepstreamClient) {
+    private func updateRecord(subscription: String, client: DSDeepstreamClient) {
         DispatchQueue.main.async {
             var count = 0
             let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
@@ -66,7 +66,7 @@ final public class Publisher {
         }
     }
     
-    private func listenEvent(client: DeepstreamClient) {        
+cgetent    private func listenEvent(client: DSDeepstreamClient) {
         client.event.listen("event/.*",
                             listenListener: PublisherListenListener(handler: { (subscription, client) in
                                 print("Publisher: Event \(subscription) just subscribed.")
@@ -75,7 +75,7 @@ final public class Publisher {
     }
 
     
-    private func publishEvent(subscription: String, client: DeepstreamClient) {
+    private func publishEvent(subscription: String, client: DSDeepstreamClient) {
         DispatchQueue.main.async {
             let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
                 let timeInterval : TimeInterval = Date().timeIntervalSince1970
@@ -88,17 +88,17 @@ final public class Publisher {
         }
     }
 
-    private func provideRpc(client: DeepstreamClient) {
-        typealias PublisherRpcRequestedListenerHandler = ((String, Any, RpcResponse) -> Void)
+    private func provideRpc(client: DSDeepstreamClient) {
+        typealias PublisherRpcRequestedListenerHandler = ((String, Any, DSRpcResponse) -> Void)
         
-        final class PublisherRpcRequestedListener : NSObject, RpcRequestedListener {
+        final class PublisherRpcRequestedListener : NSObject, DSRpcRequestedListener {
             private var handler : PublisherRpcRequestedListenerHandler!
             
             init(handler: @escaping PublisherRpcRequestedListenerHandler) {
                 self.handler = handler
             }
             
-            func onRPCRequested(_ rpcName: String!, data: Any!, response: RpcResponse!) {
+            func onRPCRequested(_ rpcName: String!, data: Any!, response: DSRpcResponse!) {
                 self.handler(rpcName, data, response)
             }
         }
@@ -107,7 +107,7 @@ final public class Publisher {
                             rpcRequestedListener: PublisherRpcRequestedListener { (rpcName, data, response) in
                                 print("Publisher: Got an RPC request")
                                 
-                                guard let numbers = (data as? JsonArray)?.array as? [Double] else {
+                                guard let numbers = (data as? GSONJsonArray)?.array as? [Double] else {
                                     print("Publisher: Unable to cast data to Array")
                                     return
                                 }
@@ -127,15 +127,15 @@ final public class Publisher {
         })
     }
     
-    private func subscribeRuntimeErrors(client: DeepstreamClient) {
+    private func subscribeRuntimeErrors(client: DSDeepstreamClient) {
         client.setRuntimeErrorHandler(RuntimeErrorHandler())
     }
     
-    private func subscribeConnectionChanges(client: DeepstreamClient) {
+    private func subscribeConnectionChanges(client: DSDeepstreamClient) {
         client.addConnectionChange(AppConnectionStateListener())
     }
 
-    private func updateRecordWithAck(recordName: String, client: DeepstreamClient) {
+    private func updateRecordWithAck(recordName: String, client: DSDeepstreamClient) {
         guard let record = client.record.getRecord(recordName) else {
             print("Publisher: No record name \(recordName)")
             return

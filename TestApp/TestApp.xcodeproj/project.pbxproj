@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AB1F6A9BC6437319635BA6C /* libPods-TestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B696DA99CF4D490CAD9ED09A /* libPods-TestApp.a */; };
+		EF2E4D7478FA0B7E20AEAAB1 /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4809BA227E7856CF405F8E /* Pods_TestApp.framework */; };
 		FA0228DB1E05BEDE0021FF62 /* AppConnectionStateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */; };
 		FA0228DD1E05BF4F0021FF62 /* RunTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */; };
 		FA0228EC1E05D9C80021FF62 /* PublishListenListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */; };
@@ -32,8 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D4809BA227E7856CF405F8E /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F061EBD6454E35921388A60 /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
-		B696DA99CF4D490CAD9ED09A /* libPods-TestApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0228DA1E05BEDE0021FF62 /* AppConnectionStateListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConnectionStateListener.swift; sourceTree = "<group>"; };
 		FA0228DC1E05BF4F0021FF62 /* RunTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeHandler.swift; sourceTree = "<group>"; };
 		FA0228EB1E05D9C80021FF62 /* PublishListenListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishListenListener.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB1F6A9BC6437319635BA6C /* libPods-TestApp.a in Frameworks */,
+				EF2E4D7478FA0B7E20AEAAB1 /* Pods_TestApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 		30E2879EC30868E020DDA43D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B696DA99CF4D490CAD9ED09A /* libPods-TestApp.a */,
+				0D4809BA227E7856CF405F8E /* Pods_TestApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -346,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7F061EBD6454E35921388A60 /* Pods-TestApp.debug.xcconfig */;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/TestApp/App/TestApp-Bridging-Header.h";
@@ -357,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA57988956EB91F9FAA4EC91 /* Pods-TestApp.release.xcconfig */;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/TestApp/App/TestApp-Bridging-Header.h";

@@ -8,8 +8,8 @@
 
 import Foundation
 
-final class RuntimeErrorHandler : NSObject, DeepstreamRuntimeErrorHandler {
-    func onException(_ topic: Topic!, event: Event!, errorMessage: String!) {
+final class RuntimeErrorHandler : NSObject, DSDeepstreamRuntimeErrorHandler {
+    func onException(_ topic: DSTopic!, event: DSEvent!, errorMessage: String!) {
         if (errorMessage != nil && topic != nil && event != nil) {
             print("Error: \(errorMessage!) for topic: \(topic!), event: \(event!)")
         }

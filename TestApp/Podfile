@@ -1,4 +1,5 @@
-platform :osx, '10.9'
+platform :osx, '10.10'
+use frameworks!
 
 target 'TestApp' do
 	pod 'DeepstreamIO', :podspec => '../DeepstreamIO.podspec'

@@ -8,14 +8,14 @@
 
 import Foundation
 
-typealias PublisherListenListenerCallbackHandler = ((String, DeepstreamClient) -> Void)
+typealias PublisherListenListenerCallbackHandler = ((String, DSDeepstreamClient) -> Void)
 
-final class PublisherListenListener: NSObject, ListenListener {
+final class PublisherListenListener: NSObject, DSListenListener {
     
     private var handler : PublisherListenListenerCallbackHandler!
-    private var client : DeepstreamClient!
+    private var client : DSDeepstreamClient!
     
-    init(handler: @escaping PublisherListenListenerCallbackHandler, client: DeepstreamClient) {
+    init(handler: @escaping PublisherListenListenerCallbackHandler, client: DSDeepstreamClient) {
         self.handler = handler
         self.client = client
     }

@@ -19,7 +19,7 @@ final public class Subscriber {
             "RECORD_READ_TIMEOUT" : 500,
         ]
         
-        guard let client = DeepstreamClient("0.0.0.0:6020", properties: properties.toProperties) else {
+        guard let client = DSDeepstreamClient("0.0.0.0:6020", properties: properties.toProperties) else {
             print("Subscriber: Unable to initialize client")
             return
         }
@@ -48,7 +48,7 @@ final public class Subscriber {
         }
     }
     
-    private func hasRecord(client: DeepstreamClient) {
+    private func hasRecord(client: DSDeepstreamClient) {
         guard let hasResult = client.record.has("record/has") else {
             print("Subscriber: Has did not work")
             return
@@ -57,7 +57,7 @@ final public class Subscriber {
         print("Subscriber: Has result: \(hasResult)")
     }
     
-    private func makeSnapshot(client: DeepstreamClient, recordName: String) {
+    private func makeSnapshot(client: DSDeepstreamClient, recordName: String) {
         let snapshotResult = client.record.snapshot(recordName)!
         
         if (snapshotResult.hasError()) {
@@ -67,7 +67,7 @@ final public class Subscriber {
         }
     }
     
-    private func makeRpc(client: DeepstreamClient) {
+    private func makeRpc(client: DSDeepstreamClient) {
         DispatchQueue.main.async {
             let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
                 let data = [
@@ -87,32 +87,32 @@ final public class Subscriber {
         }
     }
     
-    private func subscribeRuntimeErrors(client: DeepstreamClient) {
+    private func subscribeRuntimeErrors(client: DSDeepstreamClient) {
         client.setRuntimeErrorHandler(RuntimeErrorHandler())
     }
     
-    private func subscribeConnectionChanges(client: DeepstreamClient) {
+    private func subscribeConnectionChanges(client: DSDeepstreamClient) {
         client.addConnectionChange(AppConnectionStateListener())
     }
     
-    private func subscribeAnonymousRecord(client: DeepstreamClient) {
+    private func subscribeAnonymousRecord(client: DSDeepstreamClient) {
         let _ = client.record.getAnonymousRecord()
     }
     
-    private func subscribeList(client: DeepstreamClient) {
+    private func subscribeList(client: DSDeepstreamClient) {
         guard let list = client.record.getList("list/a") else {
             print("Subscriber: Unable to get list: list/a")
             return
         }
         
-        final class SubscribeListChangedListener : NSObject, ListChangedListener {
+        final class SubscribeListChangedListener : NSObject, DSListChangedListener {
             func onListChanged(_ listName: String!, entries: IOSObjectArray!) {
                 print("Subscriber: List \(listName) entries changed to \(entries)")
             }
         }
         list.subscribe(SubscribeListChangedListener())
         
-        final class SubscribeListEntryChangedListener : NSObject, ListEntryChangedListener {
+        final class SubscribeListEntryChangedListener : NSObject, DSListEntryChangedListener {
             func onEntryAdded(_ listName: String!, entry entry_: String!, position: jint) {
                 print("Subscriber: List \(listName) entry \(entry_) added at \(position)")
             }
@@ -128,14 +128,14 @@ final public class Subscriber {
         list.subscribe(toListEntryChange: SubscribeListEntryChangedListener())
     }
     
-    private func subscribeRecord(client: DeepstreamClient, recordName: String) {
+    private func subscribeRecord(client: DSDeepstreamClient, recordName: String) {
         guard let record = client.record.getRecord(recordName) else {
             print("Subscriber: Unable to get recordName \(recordName)")
             return
         }
         
-        final class SubscribeRecordChangedCallback : NSObject, RecordChangedCallback {
-            func onRecordChanged(_ recordName: String!, data: JsonElement!) {
+        final class SubscribeRecordChangedCallback : NSObject, DSRecordChangedCallback {
+            func onRecordChanged(_ recordName: String!, data: GSONJsonElement!) {
                 print("Subscriber: Record '\(recordName!)' changed, data is now: \(data.dict)")
             }
         }
@@ -144,11 +144,11 @@ final public class Subscriber {
         print("Subscriber: Record '\(record.name()!)' initial state: \(record.get()!)")
     }
     
-    private func subscribeEvent(client: DeepstreamClient) {
+    private func subscribeEvent(client: DSDeepstreamClient) {
         
-        final class SubscriberEventListener : NSObject, EventListener {
+        final class SubscriberEventListener : NSObject, DSEventListener {
             func onEvent(_ eventName: String!, args: Any!) {
-                guard let parameters = (args as? JsonArray)?.array else {
+                guard let parameters = (args as? GSONJsonArray)?.array else {
                     print("Subscriber: Unable to cast args as JsonArray")
                     return
                 }
@@ -170,9 +170,9 @@ final public class Subscriber {
         client.event.subscribe("event/a", eventListener: SubscriberEventListener())
     }
     
-    private func subscribePresence(client: DeepstreamClient) {
+    private func subscribePresence(client: DSDeepstreamClient) {
         
-        final class SubscriberPresenceEventListener : NSObject, PresenceEventListener {
+        final class SubscriberPresenceEventListener : NSObject, DSPresenceEventListener {
             func onClientLogin(with username: String!) {
                 print("Subscriber: \(username!) logged in")
             }
@@ -185,7 +185,7 @@ final public class Subscriber {
         client.presence.subscribe(SubscriberPresenceEventListener())
     }
     
-    private func queryClients(client: DeepstreamClient) {
+    private func queryClients(client: DSDeepstreamClient) {
         guard let clients = client.presence.getAll() else {
             print("Subscriber: Unable to get all clients")
             return
