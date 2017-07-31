@@ -46,9 +46,9 @@ An example of this is in the [Example](Example) project in the repository.
 
 # Deepstream Extensions
 
-To help bridge between the Java transpiled Objective-C, several Swift extension files are provided in the Pod that can be used to simplify usage of the DeepstreamIO pod.
+To help bridge between the Java transpiled Objective-C, a Swift extension file has been provided in the Pod that can be used to simplify usage of the DeepstreamIO pod.
 
-To add these:
+To add this:
 
 1. In the newly created .xcworkspace in your directory, expand the `Pods > Pods > DeepstreamIO` tree.
 
