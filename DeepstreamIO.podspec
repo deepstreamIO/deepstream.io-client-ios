@@ -34,6 +34,6 @@ Pod::Spec.new do |s|
   s.osx.frameworks            = 'ExceptionHandling'
   s.pod_target_xcconfig       = { 'SWIFT_VERSION' => '3.0' }
   s.resources                 = "swift/*.swift"
-  s.dependency                'Starscream', '~> 2.0.3'
+  s.dependency                'Starscream', '~> 3.0.2'
 end
 
