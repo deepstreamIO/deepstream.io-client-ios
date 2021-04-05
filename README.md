@@ -1,3 +1,5 @@
+UNMAINTAINED
+
 # DeepstreamIO
 
 [![CI Status](http://img.shields.io/travis/Akram Hussein/DeepstreamIO.svg?style=flat)](https://travis-ci.org/Akram Hussein/DeepstreamIO)
